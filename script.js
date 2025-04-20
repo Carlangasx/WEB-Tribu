@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- Configuration ---
-    const targetSectionId = 'flavors-section'; // <-- CHANGE THIS to the ID of the section you want to scroll to
+    const targetSectionId = 'hero-section'; // <-- CHANGE THIS to the ID of the section you want to scroll to
     // -------------------
 
     const targetElement = document.getElementById(targetSectionId);

@@ -345,7 +345,7 @@ section {
 /* 1. HERO SECTION                         */
 /* ========================================= */
 .hero-section {
-  background-image: url('imagenes/Kombuha\ hero\ portrait.svg');
+  background-image: url('imagenes/Kombuha\ hero\ portrait.webp');
   background-size: cover;
   background-position: center;
   color: var(--color-text-light);
@@ -773,7 +773,7 @@ footer {
 /* ---- Medium Screens (Tablets, smaller laptops) ---- */
 @media (max-width: 992px) {
   h1 { font-size: 3.5em; }
-  h2 { font-size: 2.4em; }
+  h2 { font-size: 2.4em; font-family: ; }
   h3 { font-size: 1.6em; }
   p { font-size: 1em; }
 
