@@ -26,10 +26,13 @@
   /* Border radius */
   --border-radius-small: 4px;
   --border-radius-medium: 8px;
-}
 
-/* Import fonts (add these to your <head> or @import in CSS) */
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&family=Permanent+Marker&display=swap'); */
+  /* Header Height Variables (for easier adjustment) */
+  --header-height-desktop: 70px;
+  --header-height-mobile: 65px;
+  /* Add a buffer for scroll margin */
+  --scroll-margin-buffer: 20px;
+}
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -37,14 +40,20 @@
   padding: 0;
 }
 
+/* Apply smooth scrolling globally */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-body);
-  line-height: 1.7; /* Slightly more relaxed line height */
+  line-height: 1.7;
   color: var(--color-text-dark);
   background-color: var(--color-background-light);
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevent horizontal scroll */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Removed body padding-top - rely on scroll-margin-top */
 }
 
 .container {
@@ -53,8 +62,12 @@ body {
   padding: 0 var(--spacing-medium);
   width: 100%;
 }
+
+/* Container used in Flavors - Reconsider max-height */
 .specific-container {
-  max-height: 600px; /* Example for a specific container */
+  /* max-height: 600px; /* WARNING: Fixed height can cause content cutoff. Is this needed? */
+  width: 100%; /* Assuming it should behave like .container horizontally */
+  max-width: 1200px; /* Assuming it should behave like .container horizontally */
   margin: 0 auto;
   padding: 0 var(--spacing-medium);
 }
@@ -62,21 +75,21 @@ body {
 h1, h2, h3 {
   font-family: var(--font-heading);
   color: var(--color-primary);
-  line-height: 1.1; /* Tighter line height for headings */
+  line-height: 1.1;
   margin-bottom: var(--spacing-small);
-  text-align: center; /* Default to center for consistency */
+  text-align: center;
 }
 
 h1 {
-  font-size: 4em; /* Bigger, more impactful */
+  font-size: 4em;
   margin-bottom: var(--spacing-medium);
-  letter-spacing: -0.03em; /* Slightly tighter letter spacing */
+  letter-spacing: -0.03em;
 }
 
 h2 {
   font-size: 2.8em;
   margin-bottom: var(--spacing-large);
-  color: var(--color-background-dark); /* Section titles darker for contrast */
+  color: var(--color-background-dark);
 }
 
 h3 {
@@ -86,7 +99,7 @@ h3 {
 
 p {
   margin-bottom: var(--spacing-small);
-  font-size: 1.1em; /* Slightly larger base text */
+  font-size: 1.1em;
 }
 
 a {
@@ -106,34 +119,39 @@ img {
 }
 
 /* ========================================= */
-/* CTA Button Styles (Refined & New)       */
+/* CTA Button Styles                       */
 /* ========================================= */
 .cta-button {
-  display: inline-flex; /* Use flex to potentially align icon/text */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: var(--spacing-small) var(--spacing-medium);
   border-radius: var(--border-radius-small);
-  font-family: var(--font-heading); /* Use heading font for CTAs */
+  font-family: var(--font-heading);
   font-size: 1.1em;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
-  transition: all 0.3s ease; /* Smooth transitions for multiple properties */
+  transition: all 0.3s ease;
   border: none;
-  gap: var(--spacing-xs); /* Space between text and potential icon */
+  gap: var(--spacing-xs);
 }
 
 .cta-button.primary-cta {
   background-color: var(--color-secondary);
   color: var(--color-text-dark);
+  font-family: var(--font-body);
 }
-
 .cta-button.primary-cta:hover {
   background-color: var(--color-primary);
   color: var(--color-text-light);
   transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+.cta-button.primary-cta:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: color-mix(in srgb, var(--color-secondary) 80%, black 20%);
 }
 
 .cta-button.secondary-cta {
@@ -142,257 +160,157 @@ img {
    border: 2px solid var(--color-primary);
    padding: calc(var(--spacing-small) - 2px) calc(var(--spacing-medium) - 2px);
 }
-
 .cta-button.secondary-cta:hover {
   background-color: var(--color-primary);
   color: var(--color-text-light);
   transform: translateY(-3px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
-
-/* WhatsApp Specific CTA */
-.cta-button.whatsapp-cta {
-  background-color: #25D366; /* WhatsApp Green */
+.cta-button.secondary-cta:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-primary);
   color: var(--color-text-light);
 }
 
+.cta-button.whatsapp-cta {
+  background-color: #25D366;
+  color: var(--color-text-light);
+  font-family: var(--font-body);
+}
 .cta-button.whatsapp-cta:hover {
-  background-color: #1DA851; /* Darker Green */
+  background-color: #1DA851;
   transform: translateY(-3px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-  color: var(--color-text-light); /* Ensure text remains light */
+  color: var(--color-text-light); /* Keep text white on hover */
+}
+.cta-button.whatsapp-cta:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: color-mix(in srgb, #25D366 80%, black 20%);
 }
 
-/* Style for icon inside CTA (assuming you use an icon font or SVG) */
 .cta-button i {
-  font-size: 1.2em; /* Adjust icon size */
+  font-size: 1.2em;
 }
-/* Add this CSS to your style.css file */
+
+/* Focus Styles (Accessibility) */
+.cta-button:focus {
+  /* Using box-shadow for focus ring */
+  outline: none;
+  box-shadow: #d5e9b7; /* Based on --color-secondary */
+}
+/* Optional: Only show focus ring on keyboard focus */
+.cta-button:focus:not(:focus-visible) {
+   box-shadow: none; /* Remove ring for mouse clicks if desired */
+}
+.cta-button:focus-visible {
+    outline: none;
+    box-shadow: #d5e9b7;
+}
 
 /* ========================================= */
-/* SITE HEADER (Fixed Navigation) - Alignment Refined */
+/* SITE HEADER (Fixed Navigation)          */
 /* ========================================= */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(253, 251, 248, 0.95);
+  background-color: rgba(255, 255, 255, 0.95); /* Adjusted background color */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   z-index: 1000;
-  padding: var(--spacing-small) 0; /* Vertical padding */
+  padding: var(--spacing-xs) 0;
   display: flex;
-  align-items: center; /* Centers container vertically within the header */
-  min-height: 60px;
+  align-items: center;
+  min-height: var(--header-height-desktop);
 }
 
 .site-header .container {
   display: flex;
-  align-items: center; /* Ensures logo, nav, and whatsapp are vertically centered relative to each other */
+  align-items: center;
   justify-content: space-between;
-  /* Remove the gap here if you prefer specific margins/padding */
-  /* gap: var(--spacing-medium); */
-  width: 100%; /* Ensure container takes full width */
+  width: 100%;
 }
 
 .site-logo {
-  font-family: var(--font-heading);
-  font-size: 1.8em;
-  font-weight: bold;
-  color: var(--color-primary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
   margin-right: var(--spacing-medium);
-  flex-shrink: 0; /* Prevent logo from shrinking */
-  /* Vertically center the text content within the logo link */
-  display: flex;
+  flex-shrink: 0;
+  display: flex; /* For vertical alignment if needed */
   align-items: center;
 }
-
-.main-nav {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* <--- Add this! Centers the nav content block vertically */
+.site-logo img {
+  max-height: 50px;
+  width: auto;
 }
 
+/* Hamburger Toggle Button - Hidden on Desktop */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 1.8em;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  line-height: 1;
+  z-index: 1001;
+}
+
+/* Desktop Navigation */
+.main-nav {
+  flex-grow: 1; /* Allow nav to take up space */
+  display: flex;
+  justify-content: center; /* Center nav links container */
+  align-items: center;
+}
 .main-nav ul {
   list-style: none;
   display: flex;
   gap: var(--spacing-medium);
   padding: 0;
   margin: 0;
-  align-items: center; /* <--- Add this! Centers the <li> items vertically within the ul */
+  align-items: center; /* Vertically center nav items */
 }
-
 .main-nav li {
-   /* Add or ensure no default vertical margin/padding here */
    padding: 0;
    margin: 0;
-   /* Optional: display: flex; align-items: center; if LI had complex content */
 }
-
 .main-nav a {
   font-family: var(--font-body);
   font-weight: 600;
   color: var(--color-text-dark);
   transition: color 0.3s ease, border-bottom-color 0.3s ease;
-  font-size: 0.95em;
-  padding: var(--spacing-xs) 0; /* Keep small vertical padding */
+  font-size: 0.95em; /* Corrected typo */
+  padding: var(--spacing-xs) 0;
   border-bottom: 2px solid transparent;
-  display: inline-block;
-   /* Vertically center the text content within the link if needed */
-  display: flex; /* Change to flex */
-  align-items: center; /* Center the text */
-  height: 100%; /* Ensure link takes full height of LI */
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
-
 .main-nav a:hover,
 .main-nav a:focus {
   color: var(--color-primary);
   border-bottom-color: var(--color-primary);
 }
 
+/* Desktop Header WhatsApp Button */
 .cta-button.header-whatsapp-cta {
+  /* Inherits base .cta-button and .whatsapp-cta styles */
   font-size: 1em;
   padding: var(--spacing-small);
-  border-radius: var(--border-radius-small);
-  margin-left: var(--spacing-medium);
-  flex-shrink: 0; /* Prevent button from shrinking */
-  /* Inherits display: flex and align-items: center from base cta-button */
-}
-
-/* Ensure icon and text are centered within the header CTA */
-.header-whatsapp-cta i,
-.header-whatsapp-cta .cta-text {
-  /* align-items: center; is applied to the parent .cta-button */
-  /* gap property handles spacing */
-}
-
-
-/* ========================================= */
-/* Responsive Adjustments - Alignment Review */
-/* ========================================= */
-@media (max-width: 992px) {
-  .site-logo { font-size: 1.6em; }
-  .main-nav ul { gap: var(--spacing-small); }
-  .cta-button.header-whatsapp-cta {
-       font-size: 0.95em;
-       padding: var(--spacing-xs) var(--spacing-small);
-       margin-left: var(--spacing-small);
-  }
-   /* Ensure alignment remains correct */
-   .site-header .container,
-   .main-nav,
-   .main-nav ul {
-       align-items: center;
-   }
-}
-
-@media (max-width: 768px) {
-  .site-header .container {
-      flex-direction: column; /* Stack items vertically */
-      gap: var(--spacing-small);
-      padding: var(--spacing-small); /* Adjust padding for stacked layout */
-  }
-
-  .site-logo {
-      font-size: 1.8em;
-      margin-right: 0;
-      margin-bottom: var(--spacing-small);
-      width: 100%;
-      justify-content: center; /* Center logo text when stacked */
-  }
-
-  .main-nav {
-      width: 100%;
-      justify-content: center;
-      margin-bottom: var(--spacing-small);
-      align-items: center; /* Ensure nav block is centered */
-  }
-
-  .main-nav ul {
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: var(--spacing-small) var(--spacing-medium);
-      align-items: center; /* Ensure li items are centered when wrapped */
-  }
-
-  .main-nav a {
-      padding: var(--spacing-xs) var(--spacing-small); /* Add some horizontal padding on mobile nav items */
-       /* Keep display: flex and align-items: center */
-  }
-
-
-  .cta-button.header-whatsapp-cta {
-      font-size: 1.1em;
-      padding: var(--spacing-small) var(--spacing-medium);
-      margin-left: 0;
-      width: auto;
-      /* Hide text, show icon only */
-       /* Keep display: flex and align-items: center */
-  }
-   .header-whatsapp-cta .cta-text { display: none; }
-    .cta-button.header-whatsapp-cta { padding: var(--spacing-small); } /* Square padding for icon-only */
-    .header-whatsapp-cta i { margin: 0; /* Remove gap if no text */ }
-
-  /* Adjust scroll offset for stacked header */
-   section {
-      /* Make sure scroll-margin-top is greater than max header height */
-      scroll-margin-top: 160px; /* Example: needs to be taller than max header height */
-   }
-}
-
-/* Further adjustments for very small mobile screens */
-@media (max-width: 480px) {
-   .site-logo { font-size: 1.6em; margin-bottom: var(--spacing-xs); }
-   .main-nav ul { gap: var(--spacing-xs) var(--spacing-small); }
-   section { scroll-margin-top: 140px; } /* Example: Adjust based on header height */
-    .cta-button.header-whatsapp-cta {
-       font-size: 1em;
-       padding: var(--spacing-small);
-    }
-}
-
-
-
-/* ========================================= */
-/* Body Padding for Fixed Header           */
-/* ========================================= */
-/* Add padding to the top of the body equal to the header height */
-/* You might need to adjust this value based on the final header height */
-/* Or use scroll-padding-top on sections as mentioned before */
-body {
-  padding-top: 80px; /* Estimate header height + a little buffer */
-  /* Make sure this is enough so content doesn't start under the header */
-}
-
-/* If you use scroll-padding-top on sections, remove the body padding-top above */
-section {
-  /* scroll-padding-top needs to be applied to the *scroll container*
-     or the element closest to the viewport if applied to the linked sections.
-     Applying to html or body is simpler if you don't need section-specific offsets.
-     Let's stick to `html { scroll-behavior: smooth; }` and adjust body padding-top
-     or use scroll-margin-top on sections if needed.
-     A common pattern is applying scroll-margin-top to the sections themselves. */
-  scroll-margin-top: 100px; /* Space above the section when scrolled to, account for header height */
+  margin-left: var(--spacing-medium); /* Space it away from nav */
+  flex-shrink: 0;
 }
 
 /* ========================================= */
-/* Ensure smooth scrolling is still enabled  */
-/* ========================================= */
-html {
-  scroll-behavior: smooth;
-}
-
-
-/* ========================================= */
-/* Section Padding & Backgrounds (Enhanced)*/
+/* Section Base Styles & Scroll Offset     */
 /* ========================================= */
 section {
   padding: var(--spacing-xl) 0;
-  position: relative; /* For potential animations or background effects */
-  scroll-margin-top: 100px; /* Adjust this value if your header height changes */
+  position: relative;
+  /* Offset for fixed header - using calc with variables */
+  scroll-margin-top: calc(var(--header-height-desktop) + var(--scroll-margin-buffer));
 }
 
 /* Background Variations */
@@ -403,7 +321,7 @@ section {
 .manifesto-section { background-color: var(--color-background-light); }
 .final-cta-section { background-color: var(--color-primary); color: var(--color-text-light); }
 
-/* Ensure text color contrasts on dark backgrounds */
+/* Text color contrast on dark sections */
 .testimonials-section h2,
 .testimonials-section h3,
 .testimonials-section p,
@@ -411,84 +329,81 @@ section {
 .testimonials-section .customer-name,
 .final-cta-section h2,
 .final-cta-section p {
-  color: inherit; /* Inherit light color from parent section */
+  color: inherit;
+}
+.final-cta-section .cta-button {
+    /* Ensure final whatsapp button uses correct colors */
+    background-color: #25D366;
+    color: var(--color-text-light);
+}
+.final-cta-section .cta-button:hover {
+    background-color: #1DA851;
+    color: var(--color-text-light);
 }
 
 /* ========================================= */
-/* 1. HERO SECTION (Dynamic)                 */
+/* 1. HERO SECTION                         */
 /* ========================================= */
 .hero-section {
-  background-image: url('imagenes/Kombucha_Aesthetic_01.png'); /* Replace */
+  background-image: url('imagenes/Kombuha\ hero\ portrait.svg');
   background-size: cover;
   background-position: center;
-  /* Optional: Parallax-like effect */
-  /* background-attachment: fixed; */
   color: var(--color-text-light);
   text-align: center;
   padding: var(--spacing-xl) 0;
   display: flex;
   align-items: center;
-  min-height: 90vh; /* Taller hero */
+  min-height: 90vh;
   position: relative;
-  overflow: hidden; /* Hide potential overflow from animations */
+  overflow: hidden;
+  /* Adjust scroll margin specifically for hero if needed, often covered by body padding */
+  /* scroll-margin-top: 0; /* Example */
 }
-
 .hero-section::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)); /* More subtle gradient overlay */
+  inset: 0; /* Shortcut for top/left/right/bottom: 0 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
   z-index: 1;
 }
-
 .hero-section .container {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: fadeIn 1.5s ease-out; /* Simple fade-in animation */
+  animation: fadeIn 1.5s ease-out;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-
 .hero-content {
    max-width: 900px;
    margin: 0 auto;
 }
-
 .hero-section h1 {
   color: var(--color-text-light);
-  font-size: 5em; /* Even bigger */
+  font-size: 5em;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
 }
-
 .hero-section .subheadline {
   font-size: 1.5em;
-  margin-bottom: var(--spacing-large); /* More space before buttons */
+  margin-bottom: var(--spacing-large);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  font-weight: 300; /* Lighter weight for contrast */
+  font-weight: 300;
 }
-
 .hero-ctas {
   display: flex;
-  gap: var(--spacing-medium); /* Space between primary and WhatsApp CTA */
+  gap: var(--spacing-medium);
   justify-content: center;
-  flex-wrap: wrap; /* Wrap buttons if screen is too small */
+  flex-wrap: wrap;
 }
-
 .hero-ctas .cta-button {
-   font-size: 1.4em; /* Large, prominent CTAs */
+   font-size: 1.4em;
    padding: var(--spacing-medium) var(--spacing-large);
    border-radius: var(--border-radius-medium);
 }
@@ -500,28 +415,42 @@ section {
   position: fixed;
   bottom: var(--spacing-medium);
   right: var(--spacing-medium);
-  z-index: 1000; /* Ensure it's above other content */
-  background-color: #25D366; /* WhatsApp Green */
+  z-index: 1000;
+  background-color: #25D366;
   color: var(--color-text-light);
-  border-radius: 50%; /* Round button */
-  width: 60px; /* Size of the button */
+  border-radius: 50%;
+  width: 60px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2em; /* Icon size */
+  font-size: 2em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .floating-whatsapp:hover {
-  transform: scale(1.1); /* Slight growth effect */
+  transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
-
+.floating-whatsapp:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: color-mix(in srgb, #25D366 80%, black 20%);
+}
 .floating-whatsapp i {
-   /* Style your WhatsApp icon here - typically requires a font icon library */
    color: var(--color-text-light);
+}
+/* Focus style for floating button */
+.floating-whatsapp:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(239, 156, 102, 0.6), 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.floating-whatsapp:focus:not(:focus-visible) {
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Keep original shadow on mouse focus */
+}
+.floating-whatsapp:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(239, 156, 102, 0.6), 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -534,31 +463,24 @@ section {
   align-items: center;
   gap: var(--spacing-large);
   max-width: 1000px;
-  text-align: center; /* Keep text centered */
+  text-align: center;
 }
-
-.value-prop-content {
-  /* No specific style needed if container handles layout */
-}
-
 .value-prop-content .intro-text {
-  font-size: 1.3em; /* Make this key text stand out more */
+  font-size: 1.3em;
   max-width: 800px;
   margin: 0 auto var(--spacing-medium);
-  font-weight: 600; /* Semi-bold */
+  font-weight: 600;
   color: var(--color-text-dark);
 }
-
 .value-prop-content .product-intro {
    font-size: 1.1em;
    max-width: 800px;
    margin: 0 auto;
-   color: #555; /* Slightly lighter */
+   color: #555;
 }
 
-
 /* ========================================= */
-/* 3. BENEFITS SECTION (Visual & Scannable)*/
+/* 3. BENEFITS SECTION                       */
 /* ========================================= */
 .benefits-grid {
   display: grid;
@@ -566,7 +488,6 @@ section {
   gap: var(--spacing-large);
   text-align: center;
 }
-
 .benefit-item {
   background-color: var(--color-background-light);
   padding: var(--spacing-large) var(--spacing-medium);
@@ -577,53 +498,49 @@ section {
   align-items: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .benefit-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
-
 .benefit-item img {
-  width: 70px; /* Slightly larger icons */
-  height: 70px;
+  width: 100px;
+  height: 100px;
   margin-bottom: var(--spacing-medium);
-  filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(100deg) saturate(300%); /* Example: Tint icons green */
-  /* Or use colored SVG icons */
+  /* Consider replacing filter with actual colored SVGs for better control and accessibility */
+  /* filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(100deg) saturate(300%); */
 }
-
 .benefit-item h3 {
   margin-bottom: var(--spacing-small);
   color: var(--color-primary);
   font-size: 1.6em;
 }
-
 .benefit-item p {
    font-size: 1em;
    color: #444;
 }
 
-
 /* ========================================= */
-/* 4. FLAVORS SECTION (Engaging Grid/Carousel)*/
+/* 4. FLAVORS SECTION                        */
 /* ========================================= */
 .flavors-section h2,
-.flavors-section .section-description {
+.flavors-section .section-description { /* Section description class was missing in HTML */
    text-align: center;
 }
-
+/* Add class="section-description" to the paragraph below H2 in Flavors HTML */
 .section-description {
   font-size: 1.2em;
   margin-bottom: var(--spacing-large);
   color: #666;
+  max-width: 800px; /* Limit width */
+  margin-left: auto;
+  margin-right: auto;
 }
-
 .flavors-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Slightly wider min */
   gap: var(--spacing-large);
   margin-bottom: var(--spacing-large);
 }
-
 .flavor-item {
   text-align: center;
   background-color: var(--color-background-light);
@@ -633,416 +550,404 @@ section {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Push buttons to bottom */
-  height: 100%; /* Ensure items in a row are same height */
+  justify-content: space-between;
+  height: 100%;
 }
-
 .flavor-item:hover {
    transform: translateY(-5px);
    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
-
 .flavor-item img {
-  width: 250px; /* Bigger product images */
+  width: 100%; /* Let image fill container width */
+  max-width: 250px; /* But limit max size */
   height: auto;
   margin: 0 auto var(--spacing-small);
   border-radius: var(--border-radius-small);
-  /* Ensure image fits within container */
   object-fit: contain;
 }
-
 .flavor-item h3 {
   margin-bottom: var(--spacing-xs);
   color: var(--color-text-dark);
   font-size: 1.5em;
 }
-
 .flavor-item p {
   font-size: 1em;
   color: #555;
-  flex-grow: 1; /* Allow description to take available space */
-  margin-bottom: var(--spacing-medium); /* Space before buttons */
+  flex-grow: 1;
+  margin-bottom: var(--spacing-medium);
 }
-
 .flavor-ctas {
   display: flex;
-  flex-direction: column; /* Stack buttons vertically */
+  flex-direction: column;
   gap: var(--spacing-small);
-  margin-top: var(--spacing-small); /* Space above buttons */
+  margin-top: var(--spacing-small);
 }
-
 .flavor-ctas .cta-button {
-  width: 100%; /* Make buttons full width */
-  font-size: 1em; /* Slightly smaller buttons in cards */
+  width: 100%;
+  font-size: 1em;
   padding: var(--spacing-small);
 }
 
-
-.cta-container {
-  text-align: center;
-  margin-top: var(--spacing-large);
-}
-
-
 /* ========================================= */
-/* 5. TESTIMONIAL SECTION (Trust Building)   */
+/* 5. TESTIMONIAL SECTION                    */
 /* ========================================= */
 .testimonials-section {
   background-color: var(--color-background-dark);
   color: var(--color-text-light);
   text-align: center;
 }
-
 .testimonials-carousel {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-large);
-  /* Add JS for actual carousel functionality and adjust display */
+  /* Consider JS for real carousel */
 }
-
 .testimonial-item {
-  background-color: rgba(255, 255, 255, 0.15); /* Slightly more visible card */
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly less visible */
   padding: var(--spacing-medium);
   border-radius: var(--border-radius-medium);
   font-style: italic;
   text-align: center;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  /* Add hover effect */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .testimonial-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
-
-
 .testimonial-item blockquote {
   margin: 0 0 var(--spacing-small);
-  font-size: 1.2em; /* Larger quotes */
+  font-size: 1.2em;
   line-height: 1.6;
-  color: var(--color-text-light); /* Ensure text is light */
+  color: inherit; /* Inherit from section */
 }
-
 .testimonial-item .customer-name {
   font-style: normal;
-  font-weight: 600; /* Semi-bold */
+  font-weight: 600;
   font-size: 1em;
-  color: var(--color-secondary); /* Use accent color for names */
+  color: var(--color-secondary);
+  margin-top: var(--spacing-small); /* Add space above name */
 }
 
 /* ========================================= */
-/* 6. BRAND MANIFESTO (Authenticity & Rebel) */
+/* 6. BRAND MANIFESTO                        */
 /* ========================================= */
 .manifesto-section .container {
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: var(--spacing-large);
-   max-width: 900px; /* Keep text block readable */
+   gap: var(--spacing-medium); /* Reduced gap slightly */
+   max-width: 900px;
    text-align: center;
 }
-
-.manifesto-content {
-  /* No specific style needed if container handles layout */
-}
-
 .manifesto-content h2 {
    color: var(--color-primary);
    margin-bottom: var(--spacing-medium);
 }
-
-/* Optional: Style for the rebel accent font on part of the manifesto? */
+/* Optional: Style for the rebel accent font */
 .manifesto-content h2 span {
+  /* Keeping this as is */
   font-family: var(--font-rebel-accent);
   color: var(--color-secondary);
   font-weight: normal;
-  font-size: 1.2em; /* Adjust size relative to h2 */
-  display: block; /* Put the accent line below */
+  font-size: 1.2em;
+  display: block;
   margin-top: var(--spacing-xs);
 }
-
-
 .manifesto-content p {
-  font-size: 1.2em;
+  font-size: 1.1em; /* Slightly smaller */
   margin-bottom: var(--spacing-medium);
   color: #444;
+  line-height: 1.8; /* Slightly more spacing */
+}
+.manifesto-content p strong {
+    color: var(--color-primary); /* Make bold text stand out */
 }
 
 
 /* ========================================= */
-/* 7. FINAL CALL TO ACTION (Strong Closer)   */
+/* 7. FINAL CALL TO ACTION                   */
 /* ========================================= */
 .final-cta-section {
   background-color: var(--color-primary);
   color: var(--color-text-light);
   text-align: center;
   padding: var(--spacing-xl) var(--spacing-medium);
-  background-image: url('placeholder-final-cta-bg.png'); /* Optional: Add a graphic/texture */
+  /* Removed placeholder background */
+  /* background-image: url('placeholder-final-cta-bg.png'); */
   background-size: cover;
   background-position: center;
 }
-
 .final-cta-section h2 {
   color: var(--color-text-light);
-  font-size: 3em; /* Prominent final heading */
+  font-size: 3em;
   margin-bottom: var(--spacing-medium);
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
-
 .final-cta-section p {
-  font-size: 1.4em; /* Clear, persuasive text */
+  font-size: 1.4em;
   margin-bottom: var(--spacing-large);
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
   font-weight: 300;
 }
-
 .final-cta-section .cta-button {
-  font-size: 1.6em; /* Largest, most impactful CTA */
+  font-size: 1.6em;
   padding: var(--spacing-medium) var(--spacing-xl);
-  background-color: var(--color-secondary);
-  color: var(--color-text-dark);
   border-radius: var(--border-radius-medium);
+  /* Colors set above */
 }
-
-.final-cta-section .cta-button {
-  font-size: 1.6em; /* Largest, most impactful CTA */
-  padding: var(--spacing-medium) var(--spacing-xl);
-  /* background-color: var(--color-secondary); // This line is now less important */
-  /* color: var(--color-text-dark); // This line is now less important */
-  border-radius: var(--border-radius-medium);
-}
-
 
 /* ========================================= */
-/* FOOTER (Enhanced Contact Options)         */
+/* FOOTER                                    */
 /* ========================================= */
 footer {
   background-color: var(--color-background-dark);
   color: var(--color-text-light);
-  padding: var(--spacing-medium) 0;
+  padding: var(--spacing-large) 0; /* More padding */
   font-size: 0.95em;
   text-align: center;
 }
-
 .footer-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-medium); /* Space between main blocks */
+  gap: var(--spacing-large); /* Increased gap */
 }
-
 .footer-nav ul {
   list-style: none;
   padding: 0;
-  margin: 0; /* Remove default margin */
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--spacing-medium);
 }
-
 .footer-nav a {
-  color: var(--color-background-light);
-  transition: color 0.3s ease;
+  color: var(--color-text-light);
+  opacity: 0.8; /* Slightly muted */
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
-
 .footer-nav a:hover {
   color: var(--color-secondary);
+  opacity: 1;
 }
-
 .footer-contact {
   margin-top: var(--spacing-small);
 }
-
 .footer-contact p {
    margin-bottom: var(--spacing-xs);
+   opacity: 0.8;
 }
-
-.footer-social-whatsapp {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--spacing-small);
-  margin-top: var(--spacing-small);
-}
-
 .footer-social-whatsapp a {
-  color: var(--color-background-light);
-  font-size: 1.5em;
-  transition: color 0.3s ease, transform 0.2s ease;
+  color: var(--color-text-light);
+  font-size: 1em; /* Match surrounding text size */
+  display: inline-flex; /* Align icon and text */
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-small);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: var(--border-radius-small);
+  transition: all 0.3s ease;
 }
-
+.footer-social-whatsapp a i {
+  font-size: 1.2em; /* Make icon slightly larger */
+}
 .footer-social-whatsapp a:hover {
-  color: #25D366; /* WhatsApp Green hover */
-  transform: scale(1.1);
+  color: var(--color-text-dark);
+  background-color: #25D366; /* WhatsApp Green hover bg */
+  border-color: #25D366;
+  transform: translateY(-2px);
 }
-
 .copyright {
   margin-top: var(--spacing-medium);
-  opacity: 0.7;
+  opacity: 0.6; /* More muted */
+  font-size: 0.9em;
 }
 
+/* ========================================= */
+/* Responsive Adjustments (Consolidated)   */
+/* ========================================= */
 
-/* ========================================= */
-/* Responsive Adjustments (Refined)        */
-/* ========================================= */
+/* ---- Medium Screens (Tablets, smaller laptops) ---- */
 @media (max-width: 992px) {
   h1 { font-size: 3.5em; }
   h2 { font-size: 2.4em; }
   h3 { font-size: 1.6em; }
-  p { font-size: 1em; } /* Slightly smaller body text on smaller screens */
+  p { font-size: 1em; }
 
+  .container, .specific-container { padding: 0 var(--spacing-medium); }
+
+  /* Header Adjustments */
+  .site-logo img { max-height: 45px; }
+  .main-nav ul { gap: var(--spacing-small); }
+  .main-nav a { font-size: 0.9em; }
+  .cta-button.header-whatsapp-cta {
+      font-size: 0.95em;
+      padding: var(--spacing-xs) var(--spacing-small);
+      margin-left: var(--spacing-small);
+  }
+  .header-whatsapp-cta .cta-text { font-family: var(--font-body)}
   .hero-section h1 { font-size: 4em; }
-  .hero-section .subheadline { font-size: 1.3em; }
+  .hero-section .subheadline { font-size: 1.3em; max-width: 90%; }
   .hero-ctas .cta-button { font-size: 1.2em; padding: var(--spacing-medium); }
-
-  .final-cta-section h2 { font-size: 2.5em; }
-  .final-cta-section p { font-size: 1.2em; }
-  .final-cta-section .cta-button { font-size: 1.4em; padding: var(--spacing-medium) var(--spacing-large); }
 
   .benefits-grid,
   .flavors-grid,
-  .testimonials-carousel {
-      gap: var(--spacing-medium);
-  }
+  .testimonials-carousel { gap: var(--spacing-medium); }
+
+  .final-cta-section h2 { font-size: 2.5em; }
+  .final-cta-section p { font-size: 1.2em; max-width: 90%;}
+  .final-cta-section .cta-button { font-size: 1.4em; padding: var(--spacing-medium) var(--spacing-large); }
 }
 
+/* ---- Mobile Screens (Phones) ---- */
 @media (max-width: 768px) {
   h1 { font-size: 3em; margin-bottom: var(--spacing-medium); }
   h2 { font-size: 2em; margin-bottom: var(--spacing-large); }
   h3 { font-size: 1.4em; }
+  p { font-size: 1em; }
 
-  section {
-      padding: var(--spacing-large) 0; /* Less padding overall */
+  section { padding: var(--spacing-large) 0; }
+  .container, .specific-container { padding: 0 var(--spacing-small); }
+
+  /* Header: Horizontal Row Layout */
+  .site-header { min-height: var(--header-height-mobile); }
+  .site-header .container { gap: var(--spacing-small); }
+  .site-logo { margin-right: 0; } /* No extra margin needed */
+  .site-logo img { max-height: 40px; }
+
+  /* Show Hamburger, Hide Desktop Nav */
+  .nav-toggle { display: block; order: 3; margin-left: auto; }
+  .main-nav { /* Hidden state for mobile */
+      position: absolute;
+      top: 100%; /* Position below header */
+      left: 0;
+      width: 100%;
+      background-color: var(--color-background-light);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      padding: var(--spacing-medium) 0;
+      max-height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease-out, opacity 0.3s ease-out, visibility 0.3s ease-out;
+      flex-grow: 0; /* Reset grow */
+      align-items: stretch;
   }
-
-  .container {
-      padding: 0 var(--spacing-small); /* More padding on the sides */
+  /* Styles for Opened Mobile Nav */
+  .main-nav.is-open {
+      max-height: 80vh;
+      visibility: visible;
+      opacity: 1;
+      overflow-y: auto;
   }
-
-  .hero-section {
-      min-height: 70vh; /* Adjust height */
+  .main-nav ul { /* Vertical layout */
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      width: 100%;
   }
-
-  .hero-section h1 {
-      font-size: 3.5em; /* Adjust hero headline size */
-  }
-
-  .hero-section .subheadline {
+  .main-nav li { width: 100%; text-align: center; }
+  .main-nav a {
+      display: block;
+      width: 100%;
+      padding: var(--spacing-medium);
+      border-bottom: 1px solid var(--color-background-mid);
       font-size: 1.1em;
+      color: var(--color-primary);
+      height: auto;
+      justify-content: center;
   }
+  .main-nav a:hover,
+  .main-nav a:focus {
+      background-color: var(--color-background-mid);
+      color: var(--color-secondary);
+      border-bottom-color: var(--color-background-mid);
+  }
+  .main-nav li:last-child a { border-bottom: none; }
 
-   .hero-ctas {
-       flex-direction: column; /* Stack buttons vertically in hero on small screen */
-       gap: var(--spacing-small);
+  /* Header WhatsApp CTA on Mobile */
+  .cta-button.header-whatsapp-cta {
+      order: 2; /* Between logo and hamburger */
+      margin-left: 0; /* Reset margin */
+      margin-right: var(--spacing-small); /* Space before hamburger */
+      padding: var(--spacing-xs); /* Icon only padding */
+      font-size: 1.2em; /* Icon size */
+  }
+  .header-whatsapp-cta .cta-text { 
+    font-size: 0.85em; /* Make the text itself smaller than the icon */
+    font-weight: 500; /* Maybe slightly less bold */
+    font-family: var(--font-body)
    }
+  .header-whatsapp-cta i { 
+    font-size: 1.1em;
+   } /* Remove gap */
 
-  .cta-button {
-      padding: var(--spacing-small);
-      font-size: 1em;
+  /* Scroll Offset for Mobile Header */
+  section {
+      scroll-margin-top: calc(var(--header-height-mobile) + var(--scroll-margin-buffer));
   }
 
-   .final-cta-section h2 { font-size: 2em; }
-   .final-cta-section p { font-size: 1em; }
-  .final-cta-section .cta-button { font-size: 1.2em; padding: var(--spacing-medium); }
-
+  /* Other Mobile Adjustments */
+  .hero-section { min-height: 70vh; }
+  .hero-section h1 { font-size: 3.5em; }
+  .hero-section .subheadline { font-size: 1.1em; }
+  .hero-ctas { flex-direction: column; gap: var(--spacing-small); }
+  .cta-button { padding: var(--spacing-small); font-size: 1em; } /* Base mobile CTA size */
+  .hero-ctas .cta-button { font-size: 1.1em; padding: var(--spacing-medium); } /* Hero mobile CTA size */
 
   .benefits-grid,
   .flavors-grid,
-  .testimonials-carousel {
-      gap: var(--spacing-medium);
-  }
-
-  .flavor-item img {
-      width: 150px;
-  }
+  .testimonials-carousel { gap: var(--spacing-medium); }
+  .flavor-item img { max-width: 180px; } /* Adjust flavor image size */
 
   .floating-whatsapp {
       width: 50px;
       height: 50px;
       font-size: 1.8em;
-      bottom: var(--spacing-small);
-      right: var(--spacing-small);
   }
+  .footer-nav ul { gap: var(--spacing-small); }
 
-  .footer-nav ul {
-      gap: var(--spacing-small);
-  }
+  .final-cta-section h2 { font-size: 2.2em; }
+  .final-cta-section p { font-size: 1.1em; }
+  .final-cta-section .cta-button { font-size: 1.3em; padding: var(--spacing-medium); }
 }
 
+/* ---- Smallest Mobile Screens ---- */
 @media (max-width: 480px) {
   h1 { font-size: 2.5em; }
-  h2 { font-size: 1.6em; }
+  h2 { font-size: 1.8em; } /* Reduced H2 size */
+  h3 { font-size: 1.3em; } /* Reduced H3 size */
+
+  .container, .specific-container { padding: 0 var(--spacing-small); }
+
+  .site-header { min-height: 60px; } /* Slightly shorter if needed */
+  .site-logo img { max-height: 35px; }
+  .nav-toggle { font-size: 1.6em; }
+  .cta-button.header-whatsapp-cta { font-size: 0.85em; padding: var(--spacing-xs); }
+  .header-whatsapp-cta .cta-text { font-size: 0.8em; } /* Smaller text */
+  .header-whatsapp-cta i { font-size: 1em; } /* Smaller icon */
+  .main-nav a { font-size: 1em; padding: var(--spacing-small) var(--spacing-medium); } /* Adjust mobile nav padding */
+
+  section {
+      /* Adjust scroll margin if header height changed */
+      scroll-margin-top: calc(60px + var(--scroll-margin-buffer)); /* Example */
+  }
 
   .hero-section h1 { font-size: 3em; }
-   .hero-section .subheadline { font-size: 1em; }
+  .hero-section .subheadline { font-size: 1em; }
 
   .benefits-grid,
   .flavors-grid,
   .testimonials-carousel {
-      grid-template-columns: 1fr; /* Stack grid items fully on smallest screens */
+      grid-template-columns: 1fr; /* Stack grids fully */
+      gap: var(--spacing-medium);
   }
+   .flavor-item img { max-width: 150px; } /* Smaller flavor image */
 
-   .flavor-item img { width: 120px; }
-}
-
-/* Add this to your style.css file */
-
-/* ========================================= */
-/* CTA Active States (For soft click effect) */
-/* ========================================= */
-
-/* When the Primary CTA is being clicked down */
-.cta-button.primary-cta:active {
-  transform: scale(0.98); /* Shrink slightly */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reduce shadow to look "pressed" */
-  background-color: color-mix(in srgb, var(--color-secondary) 80%, black 20%); /* Slightly darker background */
-   /* Optional: Slightly darker text color if needed */
-  /* color: color-mix(in srgb, var(--color-text-dark) 90%, black 10%); */
-}
-
-/* When the Secondary CTA is being clicked down */
-.cta-button.secondary-cta:active {
-  transform: scale(0.98); /* Shrink slightly */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reduce shadow */
-  background-color: var(--color-primary); /* Fill with primary color */
-  color: var(--color-text-light); /* Change text to light */
-  /* Ensure border transitions smoothly too if you animate it */
-  /* border-color: color-mix(in srgb, var(--color-primary) 80%, black 20%); */
-}
-
-/* When the WhatsApp CTA is being clicked down */
-.cta-button.whatsapp-cta:active {
-  transform: scale(0.98); /* Shrink slightly */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reduce shadow */
-  background-color: color-mix(in srgb, #25D366 80%, black 20%); /* Slightly darker green */
-   /* Optional: Keep icon color the same */
-   /* i { color: var(--color-text-light); } */
-}
-
-/* Active state for the Floating WhatsApp button */
-.floating-whatsapp:active {
-  transform: scale(0.95); /* More pronounced shrink */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow */
-  background-color: color-mix(in srgb, #25D366 80%, black 20%);
-}
-
-
-/* Also good practice: Add focus styles for keyboard navigation */
-.cta-button:focus {
-  outline: 3px solid var(--color-secondary); /* Add a visible outline */
-  outline-offset: 2px; /* Space between outline and button */
-}
-
-/* Remove default outline when active IF the focus style is clearly visible */
-/* This helps prevent a double outline briefly */
-.cta-button:focus:active {
-  outline: none;
-}
-
-html {
-  scroll-behavior: smooth;
+   .final-cta-section h2 { font-size: 2em; }
+   .final-cta-section p { font-size: 1em; }
+   .final-cta-section .cta-button { font-size: 1.2em; }
 }

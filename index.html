@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="es">
 <head>
     <!-- Google Tag Manager -->
@@ -71,29 +71,37 @@
     <!-- ========================================= -->
     <!-- SITE HEADER (Fixed Navigation)          -->
     <!-- ========================================= -->
+<!-- Add/Modify inside the <header class="site-header"> -->
     <header class="site-header">
-      <div class="container">
-          <!-- Logo or Brand Name -->
-          <a href="#hero-section" class="site-logo">
-            <img src="imagenes/logotipo.svg" alt="Logotipo Tribu Kombucha Venezuela"> <!-- ALT TEXT ACTUALIZADO -->
-          </a>
-          <nav class="main-nav">
-              <ul>
-                  <!-- Textos de Navegación en Español -->
-                  <li><a href="#value-prop-section">¿Por qué Tribu?</a></li>
-                  <li><a href="#benefits-section">Beneficios</a></li>
-                  <li><a href="#flavors-section">Sabores</a></li>
-                  <li><a href="#testimonials-section">Testimonios</a></li>
-                  <li><a href="#manifesto-section">Manifiesto</a></li>
-              </ul>
-            <!-- Updated HTML -->
-            <a href="https://wa.me/+584128315499" target="_blank" class="cta-button whatsapp-cta header-whatsapp-cta">
-              <!-- ^^^ Added whatsapp-cta class here -->
-            <i class="fab fa-whatsapp"></i> <span class="cta-text">Habla con nostros</span>
+        <div class="container">
+            <!-- Logo or Brand Name -->
+            <a href="#hero-section" class="site-logo">
+              <img src="imagenes/logotipo.svg" alt="Logotipo Tribu Kombucha Venezuela">
             </a>
+      
+            <!-- Hamburger Toggle Button (Visible only on Mobile) -->
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <i class="fas fa-bars"></i> <!-- Font Awesome Hamburger Icon -->
+                <!-- You can use SVG or CSS to create the icon too -->
+            </button>
+      
+            <!-- Main Navigation - Add an ID -->
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#value-prop-section">¿Por qué Tribu?</a></li>
+                    <li><a href="#benefits-section">Beneficios</a></li>
+                    <li><a href="#flavors-section">Sabores</a></li>
+                    <li><a href="#testimonials-section">Testimonios</a></li>
+                    <li><a href="#manifesto-section">Manifiesto</a></li>
+                </ul>
             </nav>
-      </div>
-  </header>
+      
+            <!-- WhatsApp CTA (Visible on Desktop, potentially hidden/moved on Mobile) -->
+            <a href="https://wa.me/+584128315499?text=Hola!%20,%20quiero%20saber%20mas%20de%20la%20marca" target="_blank" class="cta-button whatsapp-cta header-whatsapp-cta">
+              <i class="fab fa-whatsapp"></i> <span class="cta-text">Habla con nostros</span>
+            </a>
+        </div>
+      </header>
 
   <!-- ========================================= -->
   <!-- 1. HERO SECTION (Dynamic & Action-Oriented) -->
@@ -103,9 +111,12 @@
       <div class="hero-content">
         <!-- Textos Hero en Español -->
         <h1>Kombucha Real Sin Cuentos.<br>Bienestar Auténtico con Tribu.</h1>
-        <p class="subheadline">¿Cansada de promesas falsas y bebidas azucaradas? Descubre Tribu: kombucha auténticamente fermentada, con solo 1 gramo de azúcar por lata, sin alcohol, para un cuerpo que anhela cuidado genuino.</p>
+        <p class="subheadline">¿Cansada de promesas falsas y bebidas azucaradas? Tribu es kombucha auténticamente fermentada, con solo 1 gramo de azúcar por lata, sin alcohol, para un cuerpo que anhela cuidado genuino.</p>
         <div class="hero-ctas">
           <a href="#flavors-section" class="cta-button primary-cta">Conoce nuestros sabores</a> <!-- TEXTO BOTÓN -->
+          <a href="https://wa.me/+584128315499?text=Hola%20,%20quiero%20saber%20sus%20precios" target="_blank" class="cta-button whatsapp-cta">
+            <i class="fab fa-whatsapp"></i> Consultar precios
+          </a>
         </div>
       </div>
     </div>
@@ -119,9 +130,9 @@
              <div class="manifesto-content">
                  <!-- Textos Manifiesto en Español -->
                  <h2>Nuestro Manifiesto:<br><span>Rebélate Contra lo Artificial.</span></h2>
-                 <p><strong>Nuestra causa: </strong> En un mundo saturado de bebidas artificiales, cargadas de azúcar, químicos y falsas promesas, nace Tribu: una marca que no busca agradarle a todos, sino conectar con quienes entienden que la salud no se negocia.</p>
+                 <p><strong>Nuestra causa: </strong> En un mundo saturado de bebidas artificiales, cargadas de azúcar, químicos y falsas promesas, nace Tribu, una marca que no busca agradarle a todos, sino conectar con quienes entienden que la salud no se negocia.</p>
                  <p><strong> Nuestra propuesta:</strong>  Hacemos bebidas vivas, reales, reduciendo azúcar, sin alcohol y sin adornos. Cada lata es una declaración contra la industria que pone el margen por encima del bienestar. Cada sabor es una invitación a reconectar con lo esencial.</p>
-                 <p>Únete. Prueba la verdad.</p>
+                 <p><strong>Únetenos</strong></p>
              </div>
           </div>
         </section>
@@ -130,9 +141,9 @@
         <!-- 4. FLAVORS SECTION (Engaging & Actionable)-->
         <!-- ========================================= -->
         <section class="flavors-section" id="flavors-section">
-          <div class="specific-container">
+          <div class="container">
               <!-- Textos Sabores en Español -->
-              <h2>Descubre Nuestros Sabores de Kombucha</h2>
+              <h2>Nuestros Sabores</h2>
               <div class="flavors-grid">
                   <!-- Flavor Item 1 -->
                   <div class="flavor-item">
@@ -141,7 +152,7 @@
                       <p>Rebelión tropical con un toque ácido. Brillante y estimulante.</p>
                       <div class="flavor-ctas">
                           <!-- TEXTO BOTÓN Y LINK ACTUALIZADO -->
-                          <a href="https://wa.me/+584128315499?text=Pregúntame%20más%20sobre%20Té%20Verde" target="_blank" class="cta-button whatsapp-cta"><i class="fab fa-whatsapp"></i> Pregunta por Té Verde</a>
+                          <a href="https://wa.me/+584128315499?text=Me%20gustaría%20saber%20mas%20sobre%la%20de%20Té%20Verde" target="_blank" class="cta-button whatsapp-cta"><i class="fab fa-whatsapp"></i> Pregunta por Té Verde</a>
                       </div>
                   </div>
                    <!-- Flavor Item 2 -->
@@ -151,7 +162,7 @@
                       <p>Poder antioxidante y dulzura jugosa. Naturalmente vibrante.</p>
                       <div class="flavor-ctas">
                           <!-- TEXTO BOTÓN Y LINK ACTUALIZADO -->
-                           <a href="https://wa.me/+584128315499?text=Pregúntame%20más%20sobre%20Malojillo" target="_blank" class="cta-button whatsapp-cta"><i class="fab fa-whatsapp"></i> Pregunta por Malojillo</a>
+                           <a href="https://wa.me/+584128315499?text=Me%20gustaría%20saber%20mas%20sobre%la%20de%20Malojillo" target="_blank" class="cta-button whatsapp-cta"><i class="fab fa-whatsapp"></i> Pregunta por Malojillo</a>
                       </div>
                   </div>
                    <!-- Flavor Item 3 -->
@@ -177,19 +188,19 @@
             <div class="benefits-grid">
                 <!-- Benefit 1: Gut Health -->
                 <div class="benefit-item">
-                    <img src="placeholder-icon-gut.svg" alt="Icono ilustrativo de intestino feliz - Beneficio Kombucha Tribu"> <!-- ALT TEXT ACTUALIZADO -->
+                    <img src="imagenes/beneficio 1.svg" alt="Icono ilustrativo de intestino feliz - Beneficio Kombucha Tribu"> <!-- ALT TEXT ACTUALIZADO -->
                     <h3>Intestino Feliz</h3>
                     <p>La fermentación auténtica nutre tu microbioma intestinal naturalmente. Siente la diferencia desde adentro.</p>
                 </div>
                 <!-- Benefit 2: Energy -->
                 <div class="benefit-item">
-                    <img src="placeholder-icon-energy.svg" alt="Icono ilustrativo de energía constante - Beneficio Kombucha Tribu"> <!-- ALT TEXT ACTUALIZADO -->
+                    <img src="imagenes/beneficio 2.svg" alt="Icono ilustrativo de energía constante - Beneficio Kombucha Tribu"> <!-- ALT TEXT ACTUALIZADO -->
                     <h3>Energía Constante</h3>
                     <p>Sin bajones de azúcar, solo vitalidad sostenida. Supera tu día sin nerviosismo ni fatiga.</p>
                 </div>
                 <!-- Benefit 3: Lifestyle Fit -->
                 <div class="benefit-item">
-                    <img src="placeholder-icon-social.svg" alt="Icono ilustrativo de bebida social - Beneficio Kombucha Tribu"> <!-- ALT TEXT ACTUALIZADO -->
+                    <img src="imagenes/beneficio 3.svg" alt="Icono ilustrativo de bebida social - Beneficio Kombucha Tribu"> <!-- ALT TEXT ACTUALIZADO -->
                     <h3>Para Todo Momento</h3>
                     <p>Disfruta una opción sofisticada y sin alcohol que se adapta perfectamente a tu vida social y rutina diaria.</p>
                 </div>
@@ -204,9 +215,9 @@
             <div class="container">
                 <div class="value-prop-content">
                     <!-- Textos Propuesta de Valor en Español -->
-                    <h2>Kombucha Tribu: La Solución Real al Falso Bienestar</h2>
-                    <p class="intro-text">Eres inteligente. Ves más allá de las modas, los arreglos rápidos, las bebidas 'saludables' cargadas de azúcar oculta y palabrería de marketing. Quieres un bienestar que sea real, efectivo y que encaje en tu vida real, sin sentir que te pierdes de algo.</p>
-                    <p class="product-intro">[TRIBU] nació de esa frustración. Creemos que mereces una bebida que nutra tu cuerpo y respete tu inteligencia. Por eso elaboramos kombucha de forma auténtica: fermentada lentamente, llena de bondades naturales y orgullosamente libre de azúcar refinada y alcohol.</p>
+                    <h2>Tribu Es La Solución Real Para El Falso Bienestar</h2>
+                    <p class="intro-text">Eres curiosa. Ves más allá de las modas, los arreglos rápidos, las bebidas 'saludables' cargadas de azúcar oculta y palabrería de marketing. Quieres un bienestar que sea real, efectivo y que encaje en tu vida diaria, sin sentir que te pierdes de algo.</p>
+                    <p class="product-intro">Tribu nació de esa frustración. Creemos que mereces una bebida que nutra tu cuerpo y respete tu inteligencia. Por eso elaboramos kombucha de forma auténtica: fermentada lentamente, llena de bondades naturales y orgullosamente libre de azúcar refinada y alcohol.</p>
                 </div>
             </div>
         </section>
@@ -222,23 +233,23 @@
                     <!-- Testimonial Item 1 -->
                     <div class="testimonial-item">
                         <blockquote>
-                           "¡Por fin, una kombucha que no está llena de azúcar! [TRIBU] sabe increíble y hace que mi intestino se sienta mucho mejor. Es mi nuevo esencial diario."
+                           "¡Por fin, una kombucha que no está llena de azúcar! Sabe increíble y hace que me sienta mucho mejor. Es mi nuevo esencial diario."
                         </blockquote>
-                        <p class="customer-name">- Sarah K., 42 años</p>
+                        <p class="customer-name">- Sara R., 42 años</p>
                     </div>
                      <!-- Testimonial Item 2 -->
                     <div class="testimonial-item">
                         <blockquote>
-                           "[TRIBU] es la alternativa perfecta al vino o a los refrescos azucarados cuando quiero algo refrescante y sofisticado. Me encanta que no tenga alcohol."
+                           "Es la alternativa perfecta al vino o a los refrescos azucarados cuando quiero algo refrescante. Me encanta que no tenga alcohol."
                         </blockquote>
                          <p class="customer-name">- Jessica L., 38 años</p>
                     </div>
                      <!-- Testimonial Item 3 -->
                     <div class="testimonial-item">
                         <blockquote>
-                           "¡Los sabores son tan vibrantes y reales! Está claro que no escatiman en calidad. Además, sin regusto extraño. ¡Muy recomendable!"
+                           "¡Los sabores son super vibrantes y frescos! Está claro que no escatiman en calidad. Además, sin regusto extraño. ¡Muy recomendable!"
                         </blockquote>
-                         <p class="customer-name">- Emily R., 45 años</p>
+                         <p class="customer-name">- Mariela R., 45 años</p>
                     </div>
                 </div>
             </div>
@@ -292,12 +303,11 @@
                 </div>
             </div>
             <!-- Texto Copyright en Español -->
-            <p class="copyright">© 2023 [TRIBU] Kombucha. Todos los derechos reservados.</p>
+            <p class="copyright">© 2025 Tribu Kombucha. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Optional: Add JS for carousel, scroll animations, etc. -->
-    <!-- <script src="script.js"></script> -->
+    <script src="script.js"></script>
 
 </body>
 </html>
