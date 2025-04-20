@@ -1,262 +1,295 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KK6XCMKM');</script>
-    <!-- End Google Tag Manager -->
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- UPDATE TITLE AND META -->
-    <title>Tribu Kombucha - Naturalmente Refrescante | Kombucha Artesanal</title>
-    <meta name="description" content="Descubre Tribu Kombucha, tu bebida fermentada naturalmente, llena de sabor y probióticos. ¡Encuentra tu tribu!">
+    <!-- Título y Descripción en Español -->
+    <title>Kombucha Artesanal y Sin Alcohol | Tribu Kombucha Venezuela</title>
+    <meta name="description" content="Descubre Tribu: Kombucha real sin azúcar ni alcohol en Venezuela. Sabor auténtico y beneficios para tu bienestar. ¡Únete a la tribu!" >
+    <meta property="og:title" content="Kombucha Sin Azúcar y Sin Alcohol | Tribu Kombucha Venezuela" /> <!-- Usa tu título SEO -->
+    <meta property="og:description" content="Descubre Tribu: Kombucha real sin azúcar ni alcohol en Venezuela. Sabor auténtico y beneficios para tu bienestar." /> <!-- Usa tu descripción SEO -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="URL_COMPLETA_DE_TU_PAGINA" /> <!-- Reemplaza con la URL real -->
+    <meta property="og:image" content="URL_A_UNA_IMAGEN_ATRACTIVA" /> <!-- Reemplaza con URL de una imagen representativa (ej. hero o producto) -->
+    <meta property="og:image:alt" content="Kombucha Tribu sin azúcar y sin alcohol" />
+    <meta property="og:locale" content="es_VE" /> <!-- Localización -->
+    <meta property="og:site_name" content="Tribu Kombucha" /> <!-- Nombre de tu sitio -->
 
+    <!-- Opcional: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kombucha Sin Azúcar y Sin Alcohol | Tribu Kombucha Venezuela">
+    <meta name="twitter:description" content="Descubre Tribu: Kombucha real sin azúcar ni alcohol en Venezuela. Sabor auténtico y beneficios para tu bienestar.">
+    <meta name="twitter:image" content="URL_A_UNA_IMAGEN_ATRACTIVA">
+    <!-- Link to your enhanced stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <!-- Link to Fonts if needed -->
+    <!-- Optional: Link to Google Fonts - make sure these match your CSS variables -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Optional: Link to a library for icons (e.g., Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="canonical" href="URL_COMPLETA_DE_TU_PAGINA" /> <!-- Reemplaza con la URL PREFERIDA Y FINAL -->
 
-    <!-- Schema.org (Update with Tribu details) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BeverageCompany",
-      "name": "Tribu Kombucha",
-      "description": "Kombucha artesanal naturalmente refrescante y llena de probióticos.",
-      "image": "images/tribu-logo.svg", // Use a relevant image URL
-      "url": "[YOUR_TRIBU_URL]",
-      // Add address, makesOffer etc. if applicable
-      "keywords": "kombucha, tribu kombucha, artesanal, probióticos, bebida saludable, fermentado, natural"
-    }
-    </script>
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1930879790986983');
-        fbq('track', 'PageView');
-    </script>
-    <noscript>
-        <img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=1930879790986983&ev=PageView&noscript=1"
-    /></noscript>
-        <!-- End Meta Pixel Code -->
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Kombucha Tribu",
+        "image": "URL_A_IMAGEN_PRINCIPAL_PRODUCTO",
+        "description": "Kombucha artesanal fermentada, sin azúcar refinada y sin alcohol. Sabores Té Verde y Malojillo disponibles.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Tribu Kombucha"
+        },
+        "aggregateRating": { // Opcional: si tienes ratings/reviews
+          "@type": "AggregateRating",
+          "ratingValue": "4.8", // Ejemplo
+          "reviewCount": "25"   // Ejemplo
+        },
+        "offers": { // Opcional: si muestras precio o disponibilidad
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock", // O InStock, OutOfStock, PreOrder
+          // "priceCurrency": "USD", // O VED, etc.
+          // "price": "3.00" // Ejemplo
+          "url": "URL_COMPLETA_DE_TU_PAGINA" // Enlace para comprar/contactar
+        }
+        // Puedes añadir "review" con los testimonios si los tienes completos
+      }
+      </script>
+      
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KK6XCMKM"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
-    <!-- ====== Header ====== -->
-    <header class="site-header" id="site-header">
-        <div class="container header-container">
-            <a href="#hero" class="logo">
-                <img src="images/tribu-logo.svg" alt="Tribu Kombucha Logo">
+    <!-- ========================================= -->
+    <!-- SITE HEADER (Fixed Navigation)          -->
+    <!-- ========================================= -->
+    <header class="site-header">
+      <div class="container">
+          <!-- Logo or Brand Name -->
+          <a href="#hero-section" class="site-logo">
+            <img src="imagenes/logotipo.svg" alt="Logotipo Tribu Kombucha Venezuela"> <!-- ALT TEXT ACTUALIZADO -->
+          </a>
+          <nav class="main-nav">
+              <ul>
+                  <!-- Textos de Navegación en Español -->
+                  <li><a href="#value-prop-section">¿Por qué Tribu?</a></li>
+                  <li><a href="#benefits-section">Beneficios</a></li>
+                  <li><a href="#flavors-section">Sabores</a></li>
+                  <li><a href="#testimonials-section">Testimonios</a></li>
+                  <li><a href="#manifesto-section">Manifiesto</a></li>
+              </ul>
+            <!-- Updated HTML -->
+            <a href="https://wa.me/+584128315499" target="_blank" class="cta-button whatsapp-cta header-whatsapp-cta">
+              <!-- ^^^ Added whatsapp-cta class here -->
+            <i class="fab fa-whatsapp"></i> <span class="cta-text">Habla con nostros</span>
             </a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#products">Sabores</a></li>
-                    <li><a href="#about">Nuestra Tribu</a></li>
-                    <li><a href="#locations">Encuéntranos</a></li>
-                    <li><a href="#community">Comunidad</a></li>
-                    <!-- Add other links like Blog, Shop if needed -->
-                </ul>
             </nav>
-            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-            <!-- Optional: Shop/Cart Icon -->
-            <!-- <a href="/shop" class="shop-icon" aria-label="Shop">🛒</a> -->
+      </div>
+  </header>
+
+  <!-- ========================================= -->
+  <!-- 1. HERO SECTION (Dynamic & Action-Oriented) -->
+  <!-- ========================================= -->
+  <header class="hero-section" id="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <!-- Textos Hero en Español -->
+        <h1>Kombucha Real Sin Cuentos.<br>Bienestar Auténtico con Tribu.</h1>
+        <p class="subheadline">¿Cansada de promesas falsas y bebidas azucaradas? Descubre Tribu: kombucha auténticamente fermentada, con solo 1 gramo de azúcar por lata, sin alcohol, para un cuerpo que anhela cuidado genuino.</p>
+        <div class="hero-ctas">
+          <a href="#flavors-section" class="cta-button primary-cta">Conoce nuestros sabores</a> <!-- TEXTO BOTÓN -->
         </div>
-    </header>
-
-    <main>
-
-        <!-- ====== 1. Hero Section ====== -->
-        <section id="hero" class="hero-section">
-            <div class="hero-background">
-                <!-- Background image handled via CSS -->
-            </div>
-            <div class="container hero-content">
-                <h1>[Tribu Kombucha: Headline Principal Aquí] 🌿</h1>
-                <p class="subtitle">[Subtítulo atractivo que capture la esencia de Tribu Kombucha]</p>
-                <a href="#products" class="cta-button primary-cta">[Descubre Nuestros Sabores]</a>
-            </div>
+      </div>
+    </div>
+  </header>
+  <main>
+        <!-- ========================================= -->
+        <!-- 6. BRAND MANIFESTO (Authenticity & Tribe) -->
+        <!-- ========================================= -->
+        <section class="manifesto-section" id="manifesto-section">
+          <div class="container">
+             <div class="manifesto-content">
+                 <!-- Textos Manifiesto en Español -->
+                 <h2>Nuestro Manifiesto:<br><span>Rebélate Contra lo Artificial.</span></h2>
+                 <p><strong>Nuestra causa: </strong> En un mundo saturado de bebidas artificiales, cargadas de azúcar, químicos y falsas promesas, nace Tribu: una marca que no busca agradarle a todos, sino conectar con quienes entienden que la salud no se negocia.</p>
+                 <p><strong> Nuestra propuesta:</strong>  Hacemos bebidas vivas, reales, reduciendo azúcar, sin alcohol y sin adornos. Cada lata es una declaración contra la industria que pone el margen por encima del bienestar. Cada sabor es una invitación a reconectar con lo esencial.</p>
+                 <p>Únete. Prueba la verdad.</p>
+             </div>
+          </div>
         </section>
 
-        <!-- ====== 2. Benefits / USP Section ====== -->
-        <section id="benefits" class="benefits-section">
+        <!-- ========================================= -->
+        <!-- 4. FLAVORS SECTION (Engaging & Actionable)-->
+        <!-- ========================================= -->
+        <section class="flavors-section" id="flavors-section">
+          <div class="specific-container">
+              <!-- Textos Sabores en Español -->
+              <h2>Descubre Nuestros Sabores de Kombucha</h2>
+              <div class="flavors-grid">
+                  <!-- Flavor Item 1 -->
+                  <div class="flavor-item">
+                      <img src="imagenes/Kombucha Te verde 3und catalogo 1x1.webp" alt="Lata de Kombucha Tribu sabor Té Verde"> <!-- ALT TEXT ACTUALIZADO -->
+                      <h3>Té Verde</h3>
+                      <p>Rebelión tropical con un toque ácido. Brillante y estimulante.</p>
+                      <div class="flavor-ctas">
+                          <!-- TEXTO BOTÓN Y LINK ACTUALIZADO -->
+                          <a href="https://wa.me/+584128315499?text=Pregúntame%20más%20sobre%20Té%20Verde" target="_blank" class="cta-button whatsapp-cta"><i class="fab fa-whatsapp"></i> Pregunta por Té Verde</a>
+                      </div>
+                  </div>
+                   <!-- Flavor Item 2 -->
+                  <div class="flavor-item">
+                      <img src="imagenes/Kombucha malojillo 3 und catalogo 1x1.webp" alt="Lata de Kombucha Tribu sabor Malojillo"> <!-- ALT TEXT ACTUALIZADO -->
+                      <h3>Malojillo</h3>
+                      <p>Poder antioxidante y dulzura jugosa. Naturalmente vibrante.</p>
+                      <div class="flavor-ctas">
+                          <!-- TEXTO BOTÓN Y LINK ACTUALIZADO -->
+                           <a href="https://wa.me/+584128315499?text=Pregúntame%20más%20sobre%20Malojillo" target="_blank" class="cta-button whatsapp-cta"><i class="fab fa-whatsapp"></i> Pregunta por Malojillo</a>
+                      </div>
+                  </div>
+                   <!-- Flavor Item 3 -->
+                  <div class="flavor-item">
+                      <img src="image 123.png" alt="Próximo sabor de Kombucha Tribu - Coming Soon"> <!-- ALT TEXT ACTUALIZADO -->
+                      <h3>Próximamente</h3> <!-- TEXTO ACTUALIZADO -->
+                      <p>Floral, fresco y único.</p>
+                      <div class="flavor-ctas">
+                          <!-- TEXTO BOTÓN ACTUALIZADO -->
+                           <a href="https://wa.me/+584128315499?text=Quiero%20guardar%20la%20preventa%20del%20próximo%20sabor" target="_blank" class="cta-button whatsapp-cta"><i class="fab fa-whatsapp"></i>Guardar preventa</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- ========================================= -->
+      <!-- 3. BENEFITS SECTION (Visual & Clear)    -->
+      <!-- ========================================= -->
+      <section class="benefits-section" id="benefits-section">
+        <div class="container">
+            <!-- Textos Beneficios en Español -->
+            <h2>Beneficios Reales, Sin Compromisos.</h2>
+            <div class="benefits-grid">
+                <!-- Benefit 1: Gut Health -->
+                <div class="benefit-item">
+                    <img src="placeholder-icon-gut.svg" alt="Icono ilustrativo de intestino feliz - Beneficio Kombucha Tribu"> <!-- ALT TEXT ACTUALIZADO -->
+                    <h3>Intestino Feliz</h3>
+                    <p>La fermentación auténtica nutre tu microbioma intestinal naturalmente. Siente la diferencia desde adentro.</p>
+                </div>
+                <!-- Benefit 2: Energy -->
+                <div class="benefit-item">
+                    <img src="placeholder-icon-energy.svg" alt="Icono ilustrativo de energía constante - Beneficio Kombucha Tribu"> <!-- ALT TEXT ACTUALIZADO -->
+                    <h3>Energía Constante</h3>
+                    <p>Sin bajones de azúcar, solo vitalidad sostenida. Supera tu día sin nerviosismo ni fatiga.</p>
+                </div>
+                <!-- Benefit 3: Lifestyle Fit -->
+                <div class="benefit-item">
+                    <img src="placeholder-icon-social.svg" alt="Icono ilustrativo de bebida social - Beneficio Kombucha Tribu"> <!-- ALT TEXT ACTUALIZADO -->
+                    <h3>Para Todo Momento</h3>
+                    <p>Disfruta una opción sofisticada y sin alcohol que se adapta perfectamente a tu vida social y rutina diaria.</p>
+                </div>
+            </div>
+        </div>
+      </section>
+
+        <!-- ========================================= -->
+        <!-- 2. VALUE PROPOSITION BLOCK (Connection & Problem) -->
+        <!-- ========================================= -->
+        <section class="value-prop-section" id="value-prop-section">
             <div class="container">
-                <!-- Example Structure - Adapt based on Roy's specific benefits -->
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <div class="icon">[ICON 1]</div> <!-- Placeholder for Icon (SVG/Font) -->
-                        <h3>[Beneficio Clave 1]</h3>
-                        <p>[Descripción corta del beneficio, ej: Ingredientes 100% Naturales]</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="icon">[ICON 2]</div>
-                        <h3>[Beneficio Clave 2]</h3>
-                        <p>[Descripción corta, ej: Bajo en Azúcar]</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="icon">[ICON 3]</div>
-                        <h3>[Beneficio Clave 3]</h3>
-                        <p>[Descripción corta, ej: Lleno de Probióticos Vivos]</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="icon">[ICON 4]</div>
-                        <h3>[Beneficio Clave 4]</h3>
-                        <p>[Descripción corta, ej: Sabor Auténtico]</p>
-                    </div>
+                <div class="value-prop-content">
+                    <!-- Textos Propuesta de Valor en Español -->
+                    <h2>Kombucha Tribu: La Solución Real al Falso Bienestar</h2>
+                    <p class="intro-text">Eres inteligente. Ves más allá de las modas, los arreglos rápidos, las bebidas 'saludables' cargadas de azúcar oculta y palabrería de marketing. Quieres un bienestar que sea real, efectivo y que encaje en tu vida real, sin sentir que te pierdes de algo.</p>
+                    <p class="product-intro">[TRIBU] nació de esa frustración. Creemos que mereces una bebida que nutra tu cuerpo y respete tu inteligencia. Por eso elaboramos kombucha de forma auténtica: fermentada lentamente, llena de bondades naturales y orgullosamente libre de azúcar refinada y alcohol.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ====== 3. Product Showcase Section ====== -->
-        <section id="products" class="products-section">
+        <!-- ========================================= -->
+        <!-- 5. TESTIMONIAL SECTION (Strong Social Proof)-->
+        <!-- ========================================= -->
+        <section class="testimonials-section" id="testimonials-section">
             <div class="container">
-                <h2>Nuestros Sabores Tribales</h2>
-                <div class="products-grid">
-                    <!-- Product Card 1 -->
-                    <article class="product-card flavor-1"> <!-- Add classes for potential background variations -->
-                        <picture>
-                             <source srcset="images/tribu-flavor-1.webp" type="image/webp">
-                             <source srcset="images/tribu-flavor-1.png" type="image/png"> <!-- Fallback -->
-                            <img src="images/tribu-flavor-1.png" alt="[Nombre Sabor 1] Tribu Kombucha" loading="lazy">
-                        </picture>
-                        <div class="product-info">
-                            <h3>[Nombre Sabor 1]</h3>
-                            <p class="flavor-description">[Descripción corta y sensorial del sabor 1]</p>
-                            <a href="[LINK_TO_FLAVOR_1_OR_SHOP]" class="cta-button product-cta">Ver Más</a>
-                        </div>
-                    </article>
-                    <!-- Product Card 2 -->
-                     <article class="product-card flavor-2">
-                         <picture>
-                             <source srcset="images/tribu-flavor-2.webp" type="image/webp">
-                             <source srcset="images/tribu-flavor-2.png" type="image/png">
-                             <img src="images/tribu-flavor-2.png" alt="[Nombre Sabor 2] Tribu Kombucha" loading="lazy">
-                         </picture>
-                        <div class="product-info">
-                            <h3>[Nombre Sabor 2]</h3>
-                            <p class="flavor-description">[Descripción corta y sensorial del sabor 2]</p>
-                            <a href="[LINK_TO_FLAVOR_2_OR_SHOP]" class="cta-button product-cta">Ver Más</a>
-                        </div>
-                    </article>
-                     <!-- Product Card 3 -->
-                     <article class="product-card flavor-3">
-                        <picture>
-                             <source srcset="images/tribu-flavor-3.webp" type="image/webp">
-                             <source srcset="images/tribu-flavor-3.png" type="image/png">
-                             <img src="images/tribu-flavor-3.png" alt="[Nombre Sabor 3] Tribu Kombucha" loading="lazy">
-                        </picture>
-                        <div class="product-info">
-                            <h3>[Nombre Sabor 3]</h3>
-                            <p class="flavor-description">[Descripción corta y sensorial del sabor 3]</p>
-                            <a href="[LINK_TO_FLAVOR_3_OR_SHOP]" class="cta-button product-cta">Ver Más</a>
-                        </div>
-                    </article>
-                    <!-- Add more product cards as needed -->
-                </div>
-                 <a href="[LINK_TO_FULL_SHOP_PAGE]" class="cta-button secondary-cta view-all-cta">Ver Todos los Sabores</a>
-            </div>
-        </section>
-
-        <!-- ====== 4. About / Philosophy Section ====== -->
-        <section id="about" class="about-section">
-            <div class="container about-container">
-                 <div class="about-image">
-                     <picture>
-                         <source srcset="images/tribu-about-image.webp" type="image/webp">
-                         <source srcset="images/tribu-about-image.jpg" type="image/jpeg">
-                        <img src="images/tribu-about-image.jpg" alt="Imagen representativa de Tribu Kombucha" loading="lazy">
-                    </picture>
-                 </div>
-                <div class="about-content">
-                    <h2>Nuestra Tribu, Nuestra Pasión</h2>
-                    <p>[Párrafo sobre la historia, misión o filosofía de Tribu Kombucha. Conectar con el concepto de 'tribu'. Lorem ipsum dolor sit amet, consectetur adipiscing elit.]</p>
-                    <p>[Otro párrafo si es necesario, hablando de ingredientes, proceso artesanal, compromiso con la comunidad o sostenibilidad. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.]</p>
-                    <a href="[LINK_TO_ABOUT_PAGE_IF_EXISTS]" class="cta-button tertiary-cta">Conoce Más</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ====== 5. Social Proof / Community Section ====== -->
-        <section id="community" class="community-section">
-            <div class="container">
-                <h2>Únete a la Tribu</h2>
-                <p>[Texto introductorio sobre la comunidad, invitando a seguir en redes sociales]</p>
-                <!-- Placeholder for Instagram Feed -->
-                <div class="instagram-feed-placeholder">
-                    <p><em>[Aquí iría un feed de Instagram - Requiere JS o un widget]</em></p>
-                    <!-- Simple grid of placeholder images -->
-                    <div class="insta-grid">
-                        <div class="insta-item"><img src="https://via.placeholder.com/250x250?text=Insta+1" alt="Instagram Post 1"></div>
-                        <div class="insta-item"><img src="https://via.placeholder.com/250x250?text=Insta+2" alt="Instagram Post 2"></div>
-                        <div class="insta-item"><img src="https://via.placeholder.com/250x250?text=Insta+3" alt="Instagram Post 3"></div>
-                        <div class="insta-item"><img src="https://via.placeholder.com/250x250?text=Insta+4" alt="Instagram Post 4"></div>
+                <!-- Textos Testimonios en Español -->
+                <h2>Lo Que Dice Nuestra TRIBU</h2>
+                <div class="testimonials-carousel">
+                    <!-- Testimonial Item 1 -->
+                    <div class="testimonial-item">
+                        <blockquote>
+                           "¡Por fin, una kombucha que no está llena de azúcar! [TRIBU] sabe increíble y hace que mi intestino se sienta mucho mejor. Es mi nuevo esencial diario."
+                        </blockquote>
+                        <p class="customer-name">- Sarah K., 42 años</p>
+                    </div>
+                     <!-- Testimonial Item 2 -->
+                    <div class="testimonial-item">
+                        <blockquote>
+                           "[TRIBU] es la alternativa perfecta al vino o a los refrescos azucarados cuando quiero algo refrescante y sofisticado. Me encanta que no tenga alcohol."
+                        </blockquote>
+                         <p class="customer-name">- Jessica L., 38 años</p>
+                    </div>
+                     <!-- Testimonial Item 3 -->
+                    <div class="testimonial-item">
+                        <blockquote>
+                           "¡Los sabores son tan vibrantes y reales! Está claro que no escatiman en calidad. Además, sin regusto extraño. ¡Muy recomendable!"
+                        </blockquote>
+                         <p class="customer-name">- Emily R., 45 años</p>
                     </div>
                 </div>
-                <a href="[LINK_TO_TRIBU_INSTAGRAM]" class="cta-button social-cta" target="_blank" rel="noopener noreferrer">Síguenos en Instagram</a>
-                <!-- Optional: Testimonials -->
-                <!-- <div class="testimonials"> ... </div> -->
             </div>
         </section>
 
+        <!-- ========================================= -->
+        <!-- 7. FINAL CALL TO ACTION (Conversion Point)-->
+        <!-- ========================================= -->
+        <section class="final-cta-section" id="final-cta-section">
+          <div class="container">
+              <!-- Textos CTA Final en Español -->
+              <h2>¿Lista para Probar el Bienestar Real?</h2>
+              <p>¿Tienes preguntas o estás lista para pedir directamente? Estamos aquí para conversar.</p>
+              <a href="https://wa.me/+584128315499" target="_blank" class="cta-button whatsapp-cta">
+                  <i class="fab fa-whatsapp"></i> Chatea por WhatsApp <!-- TEXTO BOTÓN -->
+              </a>
+          </div>
+      </section>
     </main>
 
-    <!-- ====== Footer ====== -->
-    <footer class="site-footer">
-        <div class="container footer-container">
-            <div class="footer-logo">
-                 <img src="images/tribu-logo.svg" alt="Tribu Kombucha Logo">
-                 <p>© <span id="current-year"></span> Tribu Kombucha. Todos los derechos reservados.</p>
-            </div>
-            <div class="footer-links">
-                <div class="link-column">
-                    <h4>Navegación</h4>
-                    <ul>
-                        <li><a href="#products">Sabores</a></li>
-                        <li><a href="#about">Nuestra Tribu</a></li>
-                         <li><a href="#community">Comunidad</a></li>
-                    </ul>
-                </div>
-                 <div class="link-column">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="/imprint">Aviso Legal</a></li>
-                        <li><a href="/privacy">Política de Privacidad</a></li>
-                        <li><a href="/terms">Términos y Condiciones</a></li>
-                    </ul>
-                </div>
-                 <div class="link-column">
-                    <h4>Conecta</h4>
-                     <ul>
-                        <li><a href="/contact">Contacto</a></li>
-                        <li><a href="[LINK_INSTAGRAM]" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                        <li><a href="[LINK_FACEBOOK]" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-                        <!-- Add other social links -->
-                    </ul>
+     <!-- ========================================= -->
+    <!-- FLOATING WHATSAPP BUTTON (Still Useful) -->
+    <!-- ========================================= -->
+    <a href="https://wa.me/+584128315499" target="_blank" class="floating-whatsapp" aria-label="Chatea con nosotros por WhatsApp"> <!-- ARIA LABEL ACTUALIZADO -->
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ========================================= -->
+    <!-- FOOTER (Enhanced with Contact Options)    -->
+    <!-- ========================================= -->
+    <footer>
+        <div class="container footer-content">
+            <nav class="footer-nav">
+                <ul>
+                    <!-- Textos Footer Nav en Español -->
+                    <li><a href="/about">Nosotros</a></li>
+                    <li><a href="/faq">Preguntas Frecuentes</a></li>
+                    <li><a href="/contact">Contacto</a></li>
+                    <li><a href="/terms">Términos de Servicio</a></li>
+                    <li><a href="/privacy">Política de Privacidad</a></li>
+                </ul>
+            </nav>
+            <div class="footer-contact">
+                 <!-- Textos Contacto Footer en Español -->
+                <p>¿Preguntas? Nos encantaría escucharte.</p>
+                <div class="footer-social-whatsapp">
+                    <!-- WhatsApp Link in Footer -->
+                    <a href="https://wa.me/+584128315499" target="_blank" aria-label="Chatea con nosotros por WhatsApp"> <!-- ARIA LABEL ACTUALIZADO -->
+                        <i class="fab fa-whatsapp"></i> Chatea por WhatsApp <!-- TEXTO BOTÓN -->
+                    </a>
                 </div>
             </div>
-            <div class="footer-social">
-                <!-- Social icons can also go here -->
-            </div>
+            <!-- Texto Copyright en Español -->
+            <p class="copyright">© 2023 [TRIBU] Kombucha. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Optional: Back to top button -->
-    <!-- <a href="#hero" class="back-to-top">↑</a> -->
-    <!-- Start of HubSpot Embed Code -->
-    <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/47798970.js"></script>
-    <!-- End of HubSpot Embed Code -->
+    <!-- Optional: Add JS for carousel, scroll animations, etc. -->
+    <!-- <script src="script.js"></script> -->
+
 </body>
 </html>

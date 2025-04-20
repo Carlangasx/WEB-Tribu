@@ -1,414 +1,1048 @@
-/* css/style.css */
-
-/* --- Basic Reset & Variables --- */
-/* css/style.css */
-
+/* ========================================= */
+/* Basic Reset & Base Styles (Enhanced)      */
+/* ========================================= */
 :root {
-  /* Inspired by Roy Kombucha Palette (APPROXIMATIONS - REPLACE WITH TRIBU BRANDING) */
-  --color-primary: #00693E;      /* Roy's main dark green */
-  --color-secondary: #F5A623;    /* Roy's orange accent */
-  --color-accent: #FDECEC;       /* Roy's light pinkish background */
-  --color-text-dark: #212529;    /* Dark text color */
-  --color-text-light: #FFFFFF;   /* Light text (on dark backgrounds) */
-  --color-bg-light: #FFFFFF;     /* Primary background (often white) */
-  --color-bg-medium: #F8F9FA;    /* Slightly off-white/grey background */
-  --color-border: #DEE2E6;      /* Light border color */
+  /* Define your brand colors - More nuanced and modern */
+  --color-primary: #004B25; /* A slightly bolder, yet natural green */
+  --color-secondary: #EF9C66; /* A warmer, vibrant accent (think fermented tones) */
+  --color-text-dark: #004B25;   /* Deep, professional text color */
+  --color-text-light: #F8F8F2;  /* Soft off-white */
+  --color-background-light: #FFFFFF; /* Very soft, warm background */
+  --color-background-mid: #FFFAE2; /* A subtle transition background */
+  --color-background-dark: #004B25;  /* Deep, grounding background */
 
-  /* Fonts Inspired by Roy (Examples - REPLACE WITH TRIBU FONTS) */
-  /* Roy appears to use a clean sans-serif, maybe Circular or similar */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-secondary: var(--font-primary); /* Often uses the same font for headings */
+  /* Define your fonts - Suggest a pairing */
+  --font-heading: 'Fraunces', sans-serif; /* Bold, modern headline font */
+  --font-body: 'Poppins', sans-serif;           /* Clean, readable body font */
+  --font-rebel-accent: 'Permanent Marker', cursive; /* Optional: A slightly rebellious, hand-drawn feel for specific elements */
 
-  --header-height: 70px; /* Adjust as needed */
-  --border-radius-sm: 0.25rem;
-  --border-radius-md: 0.5rem;
-  --border-radius-lg: 25px; /* For pill-shaped buttons */
+  /* Basic spacing units */
+  --spacing-xs: 8px;
+  --spacing-small: 16px;
+  --spacing-medium: 32px;
+  --spacing-large: 64px;
+  --spacing-xl: 96px;
+
+  /* Border radius */
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
 }
 
-/* Reset and Global styles using new variables */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+/* Import fonts (add these to your <head> or @import in CSS) */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&family=Permanent+Marker&display=swap'); */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: var(--font-primary);
+  font-family: var(--font-body);
+  line-height: 1.7; /* Slightly more relaxed line height */
   color: var(--color-text-dark);
-  background-color: var(--color-bg-light);
-  line-height: 1.6;
+  background-color: var(--color-background-light);
   overflow-x: hidden;
-  padding-top: var(--header-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-img, picture { max-width: 100%; height: auto; display: block; }
-section { padding: 60px 0; /* Adjusted default padding */ }
 
-/* Use variables for headings */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-secondary);
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-medium);
+  width: 100%;
+}
+.specific-container {
+  max-height: 600px; /* Example for a specific container */
+  margin: 0 auto;
+  padding: 0 var(--spacing-medium);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
   color: var(--color-primary);
-  line-height: 1.3;
-  margin-bottom: 0.75em;
-  font-weight: 600; /* Example weight */
+  line-height: 1.1; /* Tighter line height for headings */
+  margin-bottom: var(--spacing-small);
+  text-align: center; /* Default to center for consistency */
 }
-h1 { font-size: 2.8rem; /* Adjusted */ text-align: center; }
-h2 { font-size: 2rem; /* Adjusted */ text-align: center; margin-bottom: 1.2em; }
-h3 { font-size: 1.3rem; /* Adjusted */ color: var(--color-primary); }
-p { margin-bottom: 1em; color: #495057; /* Slightly softer dark text */ }
 
-a { color: var(--color-primary); text-decoration: none; transition: color 0.3s ease; }
-a:hover { color: var(--color-secondary); }
-
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body {
-  font-family: var(--font-primary);
-  color: var(--tribu-text);
-  background-color: var(--tribu-bg-light);
-  line-height: 1.6;
-  overflow-x: hidden;
-  padding-top: var(--header-height); /* Prevent content overlap below fixed header */
+h1 {
+  font-size: 4em; /* Bigger, more impactful */
+  margin-bottom: var(--spacing-medium);
+  letter-spacing: -0.03em; /* Slightly tighter letter spacing */
 }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-img, picture { max-width: 100%; height: auto; display: block; }
-section { padding: 80px 0; }
-h1, h2, h3, h4 { font-family: var(--font-secondary); /* Example heading font */ color: var(--tribu-primary); line-height: 1.3; margin-bottom: 0.75em; }
-h1 { font-size: 3rem; text-align: center; }
-h2 { font-size: 2.2rem; text-align: center; margin-bottom: 1em; }
-h3 { font-size: 1.4rem; color: var(--tribu-secondary); }
-p { margin-bottom: 1em; color: #555; }
 
-/* --- Buttons --- */
-.cta-button {
-  display: inline-block;
-  padding: 10px 25px; /* Adjust padding */
-  border-radius: var(--border-radius-lg); /* Pill shape */
+h2 {
+  font-size: 2.8em;
+  margin-bottom: var(--spacing-large);
+  color: var(--color-background-dark); /* Section titles darker for contrast */
+}
+
+h3 {
+  font-size: 1.8em;
+  margin-bottom: var(--spacing-small);
+}
+
+p {
+  margin-bottom: var(--spacing-small);
+  font-size: 1.1em; /* Slightly larger base text */
+}
+
+a {
   text-decoration: none;
-  font-weight: 500; /* Adjust weight */
-  text-align: center;
-  transition: all 0.3s ease;
-  border: 1.5px solid transparent; /* Base border */
-  cursor: pointer;
-  font-family: var(--font-primary);
-  font-size: 0.95rem; /* Adjust size */
-  line-height: 1.5; /* Ensure consistent height */
+  color: var(--color-secondary);
+  transition: color 0.3s ease;
 }
+
+a:hover {
+  color: var(--color-primary);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ========================================= */
+/* CTA Button Styles (Refined & New)       */
+/* ========================================= */
+.cta-button {
+  display: inline-flex; /* Use flex to potentially align icon/text */
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-small) var(--spacing-medium);
+  border-radius: var(--border-radius-small);
+  font-family: var(--font-heading); /* Use heading font for CTAs */
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transitions for multiple properties */
+  border: none;
+  gap: var(--spacing-xs); /* Space between text and potential icon */
+}
+
 .cta-button.primary-cta {
+  background-color: var(--color-secondary);
+  color: var(--color-text-dark);
+}
+
+.cta-button.primary-cta:hover {
   background-color: var(--color-primary);
   color: var(--color-text-light);
-  border-color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
 }
-.cta-button.primary-cta:hover {
-  background-color: #005230; /* Slightly darker green */
-  border-color: #005230;
-  color: var(--color-text-light);
-  transform: translateY(-2px); /* Subtle lift */
-}
+
 .cta-button.secondary-cta {
-  background-color: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+   background-color: transparent;
+   color: var(--color-primary);
+   border: 2px solid var(--color-primary);
+   padding: calc(var(--spacing-small) - 2px) calc(var(--spacing-medium) - 2px);
 }
+
 .cta-button.secondary-cta:hover {
   background-color: var(--color-primary);
   color: var(--color-text-light);
-   transform: translateY(-2px);
-}
-/* Add other variants (tertiary, accent-bg, etc.) based on Roy's site */
-.cta-button.accent-cta { /* Example for orange button */
-  background-color: var(--color-secondary);
-  color: var(--color-text-light);
-  border-color: var(--color-secondary);
-}
-.cta-button.accent-cta:hover {
-   background-color: #e0931f; /* Darker orange */
-   border-color: #e0931f;
-   color: var(--color-text-light);
-   transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* --- Header --- */
+/* WhatsApp Specific CTA */
+.cta-button.whatsapp-cta {
+  background-color: #25D366; /* WhatsApp Green */
+  color: var(--color-text-light);
+}
+
+.cta-button.whatsapp-cta:hover {
+  background-color: #1DA851; /* Darker Green */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  color: var(--color-text-light); /* Ensure text remains light */
+}
+
+/* Style for icon inside CTA (assuming you use an icon font or SVG) */
+.cta-button i {
+  font-size: 1.2em; /* Adjust icon size */
+}
+/* Add this CSS to your style.css file */
+
+/* ========================================= */
+/* SITE HEADER (Fixed Navigation) - Alignment Refined */
+/* ========================================= */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  background-color: rgba(253, 251, 248, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   z-index: 1000;
-  /* Start semi-transparent, transition to solid white on scroll (via JS class) */
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
-  /* Subtle border at the bottom */
-  border-bottom: 1px solid transparent; /* Initially transparent */
-  height: var(--header-height);
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Style for when scrolled (add .scrolled class via JS) */
-.site-header.scrolled {
-  background-color: var(--color-bg-light);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.header-container {
+  padding: var(--spacing-small) 0; /* Vertical padding */
   display: flex;
-  justify-content: space-between; /* Pushes logo left, icons right */
+  align-items: center; /* Centers container vertically within the header */
+  min-height: 60px;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center; /* Ensures logo, nav, and whatsapp are vertically centered relative to each other */
+  justify-content: space-between;
+  /* Remove the gap here if you prefer specific margins/padding */
+  /* gap: var(--spacing-medium); */
+  width: 100%; /* Ensure container takes full width */
+}
+
+.site-logo {
+  font-family: var(--font-heading);
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-right: var(--spacing-medium);
+  flex-shrink: 0; /* Prevent logo from shrinking */
+  /* Vertically center the text content within the logo link */
+  display: flex;
   align-items: center;
-  height: 100%;
 }
 
-.logo img {
-  max-height: 35px; /* Adjust based on Tribu logo aspect ratio */
-  display: block; /* Ensure no extra space */
-}
-
-/* Navigation centered */
 .main-nav {
-  flex-grow: 1; /* Allow nav to take space but push it doesn't force centering alone */
-  display: flex; /* Use flex on the nav itself */
-  justify-content: center; /* Center the items within the nav */
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* <--- Add this! Centers the nav content block vertically */
 }
 
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: 30px; /* Adjust spacing */
+  gap: var(--spacing-medium);
+  padding: 0;
+  margin: 0;
+  align-items: center; /* <--- Add this! Centers the <li> items vertically within the ul */
+}
+
+.main-nav li {
+   /* Add or ensure no default vertical margin/padding here */
+   padding: 0;
+   margin: 0;
+   /* Optional: display: flex; align-items: center; if LI had complex content */
 }
 
 .main-nav a {
-  color: var(--color-primary); /* Use variable */
-  font-weight: 500; /* Adjust weight */
-  font-size: 0.95rem;
-  padding: 5px 0; /* Add padding for larger click area */
-  position: relative; /* For potential underline effect */
-}
-.main-nav a::after { /* Simple hover underline effect */
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-secondary);
-  transition: width 0.3s ease;
-}
-.main-nav a:hover::after {
-  width: 100%;
-}
-.main-nav a:hover {
-  color: var(--color-primary); /* Keep color same, rely on underline */
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+  font-size: 0.95em;
+  padding: var(--spacing-xs) 0; /* Keep small vertical padding */
+  border-bottom: 2px solid transparent;
+  display: inline-block;
+   /* Vertically center the text content within the link if needed */
+  display: flex; /* Change to flex */
+  align-items: center; /* Center the text */
+  height: 100%; /* Ensure link takes full height of LI */
 }
 
-/* Placeholder for Right-Side Icons (Shop/Account) */
-.header-icons {
+.main-nav a:hover,
+.main-nav a:focus {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.cta-button.header-whatsapp-cta {
+  font-size: 1em;
+  padding: var(--spacing-small);
+  border-radius: var(--border-radius-small);
+  margin-left: var(--spacing-medium);
+  flex-shrink: 0; /* Prevent button from shrinking */
+  /* Inherits display: flex and align-items: center from base cta-button */
+}
+
+/* Ensure icon and text are centered within the header CTA */
+.header-whatsapp-cta i,
+.header-whatsapp-cta .cta-text {
+  /* align-items: center; is applied to the parent .cta-button */
+  /* gap property handles spacing */
+}
+
+
+/* ========================================= */
+/* Responsive Adjustments - Alignment Review */
+/* ========================================= */
+@media (max-width: 992px) {
+  .site-logo { font-size: 1.6em; }
+  .main-nav ul { gap: var(--spacing-small); }
+  .cta-button.header-whatsapp-cta {
+       font-size: 0.95em;
+       padding: var(--spacing-xs) var(--spacing-small);
+       margin-left: var(--spacing-small);
+  }
+   /* Ensure alignment remains correct */
+   .site-header .container,
+   .main-nav,
+   .main-nav ul {
+       align-items: center;
+   }
+}
+
+@media (max-width: 768px) {
+  .site-header .container {
+      flex-direction: column; /* Stack items vertically */
+      gap: var(--spacing-small);
+      padding: var(--spacing-small); /* Adjust padding for stacked layout */
+  }
+
+  .site-logo {
+      font-size: 1.8em;
+      margin-right: 0;
+      margin-bottom: var(--spacing-small);
+      width: 100%;
+      justify-content: center; /* Center logo text when stacked */
+  }
+
+  .main-nav {
+      width: 100%;
+      justify-content: center;
+      margin-bottom: var(--spacing-small);
+      align-items: center; /* Ensure nav block is centered */
+  }
+
+  .main-nav ul {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-small) var(--spacing-medium);
+      align-items: center; /* Ensure li items are centered when wrapped */
+  }
+
+  .main-nav a {
+      padding: var(--spacing-xs) var(--spacing-small); /* Add some horizontal padding on mobile nav items */
+       /* Keep display: flex and align-items: center */
+  }
+
+
+  .cta-button.header-whatsapp-cta {
+      font-size: 1.1em;
+      padding: var(--spacing-small) var(--spacing-medium);
+      margin-left: 0;
+      width: auto;
+      /* Hide text, show icon only */
+       /* Keep display: flex and align-items: center */
+  }
+   .header-whatsapp-cta .cta-text { display: none; }
+    .cta-button.header-whatsapp-cta { padding: var(--spacing-small); } /* Square padding for icon-only */
+    .header-whatsapp-cta i { margin: 0; /* Remove gap if no text */ }
+
+  /* Adjust scroll offset for stacked header */
+   section {
+      /* Make sure scroll-margin-top is greater than max header height */
+      scroll-margin-top: 160px; /* Example: needs to be taller than max header height */
+   }
+}
+
+/* Further adjustments for very small mobile screens */
+@media (max-width: 480px) {
+   .site-logo { font-size: 1.6em; margin-bottom: var(--spacing-xs); }
+   .main-nav ul { gap: var(--spacing-xs) var(--spacing-small); }
+   section { scroll-margin-top: 140px; } /* Example: Adjust based on header height */
+    .cta-button.header-whatsapp-cta {
+       font-size: 1em;
+       padding: var(--spacing-small);
+    }
+}
+
+
+
+/* ========================================= */
+/* Body Padding for Fixed Header           */
+/* ========================================= */
+/* Add padding to the top of the body equal to the header height */
+/* You might need to adjust this value based on the final header height */
+/* Or use scroll-padding-top on sections as mentioned before */
+body {
+  padding-top: 80px; /* Estimate header height + a little buffer */
+  /* Make sure this is enough so content doesn't start under the header */
+}
+
+/* If you use scroll-padding-top on sections, remove the body padding-top above */
+section {
+  /* scroll-padding-top needs to be applied to the *scroll container*
+     or the element closest to the viewport if applied to the linked sections.
+     Applying to html or body is simpler if you don't need section-specific offsets.
+     Let's stick to `html { scroll-behavior: smooth; }` and adjust body padding-top
+     or use scroll-margin-top on sections if needed.
+     A common pattern is applying scroll-margin-top to the sections themselves. */
+  scroll-margin-top: 100px; /* Space above the section when scrolled to, account for header height */
+}
+
+/* ========================================= */
+/* Ensure smooth scrolling is still enabled  */
+/* ========================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* ========================================= */
+/* Section Padding & Backgrounds (Enhanced)*/
+/* ========================================= */
+section {
+  padding: var(--spacing-xl) 0;
+  position: relative; /* For potential animations or background effects */
+  scroll-margin-top: 100px; /* Adjust this value if your header height changes */
+}
+
+/* Background Variations */
+.value-prop-section { background-color: var(--color-background-mid); }
+.benefits-section { background-color: var(--color-background-light); }
+.flavors-section { background-color: var(--color-background-mid); }
+.testimonials-section { background-color: var(--color-background-dark); color: var(--color-text-light); }
+.manifesto-section { background-color: var(--color-background-light); }
+.final-cta-section { background-color: var(--color-primary); color: var(--color-text-light); }
+
+/* Ensure text color contrasts on dark backgrounds */
+.testimonials-section h2,
+.testimonials-section h3,
+.testimonials-section p,
+.testimonials-section blockquote,
+.testimonials-section .customer-name,
+.final-cta-section h2,
+.final-cta-section p {
+  color: inherit; /* Inherit light color from parent section */
+}
+
+/* ========================================= */
+/* 1. HERO SECTION (Dynamic)                 */
+/* ========================================= */
+.hero-section {
+  background-image: url('imagenes/Kombucha_Aesthetic_01.png'); /* Replace */
+  background-size: cover;
+  background-position: center;
+  /* Optional: Parallax-like effect */
+  /* background-attachment: fixed; */
+  color: var(--color-text-light);
+  text-align: center;
+  padding: var(--spacing-xl) 0;
   display: flex;
   align-items: center;
-  gap: 15px;
+  min-height: 90vh; /* Taller hero */
+  position: relative;
+  overflow: hidden; /* Hide potential overflow from animations */
 }
-.header-icons a {
-  color: var(--color-primary);
-  font-size: 1.2rem; /* Adjust icon size */
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)); /* More subtle gradient overlay */
+  z-index: 1;
 }
-.header-icons a:hover {
-  color: var(--color-secondary);
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1.5s ease-out; /* Simple fade-in animation */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 
-/* Mobile Menu Toggle - Keep as is for now, might need minor color adjustments */
-.menu-toggle {
-  display: none;
-  background: none; border: none; font-size: 1.8rem; /* Adjust */
-  cursor: pointer; color: var(--color-primary);
-  z-index: 1100; /* Ensure it's above mobile nav background */
+.hero-content {
+   max-width: 900px;
+   margin: 0 auto;
 }
 
-/* Mobile Nav Container adjustments */
-@media (max-width: 992px) { /* Adjust breakpoint to match Roy's */
-  .menu-toggle { display: block; }
-  .main-nav {
-      /* Keep most mobile styles from previous version */
-      display: none;
-      position: absolute;
-      top: 0; /* Cover entire screen */
-      left: 0;
-      width: 100%;
-      height: 100vh; /* Full viewport height */
-      background-color: var(--color-bg-light); /* Solid background */
-      padding-top: var(--header-height); /* Space below header */
-      z-index: 1050; /* Below toggle */
-      overflow-y: auto; /* Allow scrolling if links exceed height */
-      transition: transform 0.3s ease-in-out; /* Add slide effect */
-      transform: translateX(100%); /* Start off-screen */
-  }
-  .main-nav.active {
-      display: flex; /* Use flex to center content vertically */
-      flex-direction: column;
-      justify-content: center; /* Center links vertically */
-      transform: translateX(0); /* Slide in */
-  }
-  .main-nav ul {
-      flex-direction: column;
-      align-items: center;
-      gap: 25px; /* Increase gap */
-  }
-   .main-nav a {
-      font-size: 1.5rem; /* Larger text */
-   }
-  .header-icons { display: none; /* Hide desktop icons on mobile */ }
+.hero-section h1 {
+  color: var(--color-text-light);
+  font-size: 5em; /* Even bigger */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
 }
 
-/* --- Hero Section --- */
-.hero-section {
-  min-height: calc(85vh - var(--header-height)); /* Adjust height */
+.hero-section .subheadline {
+  font-size: 1.5em;
+  margin-bottom: var(--spacing-large); /* More space before buttons */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300; /* Lighter weight for contrast */
+}
+
+.hero-ctas {
+  display: flex;
+  gap: var(--spacing-medium); /* Space between primary and WhatsApp CTA */
+  justify-content: center;
+  flex-wrap: wrap; /* Wrap buttons if screen is too small */
+}
+
+.hero-ctas .cta-button {
+   font-size: 1.4em; /* Large, prominent CTAs */
+   padding: var(--spacing-medium) var(--spacing-large);
+   border-radius: var(--border-radius-medium);
+}
+
+/* ========================================= */
+/* Floating WhatsApp Button                  */
+/* ========================================= */
+.floating-whatsapp {
+  position: fixed;
+  bottom: var(--spacing-medium);
+  right: var(--spacing-medium);
+  z-index: 1000; /* Ensure it's above other content */
+  background-color: #25D366; /* WhatsApp Green */
+  color: var(--color-text-light);
+  border-radius: 50%; /* Round button */
+  width: 60px; /* Size of the button */
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  padding: 80px 0; /* Adjust padding */
-  color: var(--color-text-dark); /* Roy's hero text seems dark on light BG */
-  background-color: var(--color-accent); /* Use the light pinkish BG */
-}
-.hero-background {
-  /* Remove if using solid background color */
-  /* position: absolute; ... background: url(...) ... */
-  display: none; /* Assuming hero uses accent color BG */
-}
-/* Remove overlay if not using background image */
-/* .hero-background::after { ... } */
-
-.hero-content h1 {
-  color: var(--color-primary); /* Heading color */
-  margin-bottom: 0.5em;
-  font-size: 3rem; /* Adjust size */
-  font-weight: 700; /* Bolder */
-   text-shadow: none; /* Remove shadow if text is dark on light bg */
-}
-.hero-content .subtitle {
-  font-size: 1.2rem; /* Adjust size */
-  margin-bottom: 1.8em; /* Adjust spacing */
-  max-width: 650px;
-  margin-left: auto;
-  margin-right: auto;
-  color: #495057; /* Softer dark text */
-}
-/* Style the hero button */
-.hero-content .cta-button {
-  /* Use primary style or a specific one if needed */
-   background-color: var(--color-primary);
-   color: var(--color-text-light);
-   padding: 12px 35px; /* Larger padding */
-   font-size: 1rem;
-}
-.hero-content .cta-button:hover {
-  background-color: #005230;
-  border-color: #005230;
-}
-
-/* --- Benefits Section --- */
-.benefits-section { background-color: var(--tribu-bg-medium); }
-.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; }
-.benefit-item .icon { font-size: 3rem; color: var(--tribu-secondary); margin-bottom: 15px; /* Replace with actual icons */ }
-.benefit-item h3 { color: var(--tribu-primary); font-size: 1.2rem; margin-bottom: 10px; }
-.benefit-item p { font-size: 0.95rem; color: #666; }
-
-/* --- Products Section --- */
-.products-section { background-color: var(--tribu-bg-light); }
-.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 40px; }
-.product-card {
-  background-color: var(--tribu-white);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  text-align: center;
+  font-size: 2em; /* Icon size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
-.product-card img { width: 100%; max-height: 300px; object-fit: contain; /* Adjust as needed */ padding: 20px; background-color: #f0f0f0; /* Placeholder BG */ }
-/* Example: Specific flavor background colors */
-.product-card.flavor-1 { /* Adjust background/image bg */ }
-.product-card.flavor-2 { /* Adjust background/image bg */ }
-.product-card .product-info { padding: 20px; }
-.product-card h3 { color: var(--tribu-primary); margin-bottom: 10px; }
-.product-card .flavor-description { font-size: 0.9rem; color: #777; margin-bottom: 15px; min-height: 3em; /* Prevent resizing on hover */ }
-.view-all-cta { display: block; width: fit-content; margin: 40px auto 0 auto; }
 
-/* --- About Section --- */
-.about-section { background-color: var(--tribu-bg-medium); }
-.about-container { display: flex; flex-wrap: wrap; align-items: center; gap: 50px; }
-.about-image { flex: 1 1 40%; min-width: 280px; }
-.about-image img { border-radius: 10px; }
-.about-content { flex: 1 1 55%; }
-.about-content h2 { text-align: left; }
+.floating-whatsapp:hover {
+  transform: scale(1.1); /* Slight growth effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
 
-/* --- Community Section --- */
-.community-section { text-align: center; }
-.community-section > .container > p { max-width: 600px; margin: 0 auto 30px auto; }
-.instagram-feed-placeholder { background-color: #eee; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
-.insta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 15px; }
-.insta-item img { border-radius: 5px; }
-.social-cta { background-color: var(--tribu-secondary); color: var(--tribu-primary); }
-.social-cta:hover { background-color: var(--tribu-primary); color: var(--tribu-white); }
+.floating-whatsapp i {
+   /* Style your WhatsApp icon here - typically requires a font icon library */
+   color: var(--color-text-light);
+}
 
-/* --- Footer --- */
-.site-footer { background-color: var(--tribu-primary); color: rgba(255, 255, 255, 0.8); padding: 50px 0; font-size: 0.9rem; }
-.footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
-.footer-logo { flex-basis: 100%; text-align: center; margin-bottom: 20px; }
-.footer-logo img { max-height: 50px; margin-bottom: 10px; filter: brightness(0) invert(1); /* Make logo white */ }
-.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px 50px; flex-basis: 100%; text-align: center; }
-.link-column h4 { color: var(--tribu-white); margin-bottom: 15px; font-size: 1.1rem; }
-.link-column ul { list-style: none; }
-.link-column li { margin-bottom: 8px; }
-.link-column a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; }
-.link-column a:hover { color: var(--tribu-accent); }
 
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-  :root { --header-height: 60px; }
-  body { padding-top: var(--header-height); }
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 1.8rem; }
-  section { padding: 60px 0; }
+/* ========================================= */
+/* 2. VALUE PROPOSITION BLOCK                */
+/* ========================================= */
+.value-prop-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-large);
+  max-width: 1000px;
+  text-align: center; /* Keep text centered */
+}
 
-  .menu-toggle { display: block; } /* Show hamburger */
-  .main-nav {
-      display: none; /* Hide nav by default */
-      position: absolute;
-      top: var(--header-height);
-      left: 0;
-      width: 100%;
-      background-color: var(--tribu-white);
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-      padding: 20px 0;
+.value-prop-content {
+  /* No specific style needed if container handles layout */
+}
+
+.value-prop-content .intro-text {
+  font-size: 1.3em; /* Make this key text stand out more */
+  max-width: 800px;
+  margin: 0 auto var(--spacing-medium);
+  font-weight: 600; /* Semi-bold */
+  color: var(--color-text-dark);
+}
+
+.value-prop-content .product-intro {
+   font-size: 1.1em;
+   max-width: 800px;
+   margin: 0 auto;
+   color: #555; /* Slightly lighter */
+}
+
+
+/* ========================================= */
+/* 3. BENEFITS SECTION (Visual & Scannable)*/
+/* ========================================= */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-large);
+  text-align: center;
+}
+
+.benefit-item {
+  background-color: var(--color-background-light);
+  padding: var(--spacing-large) var(--spacing-medium);
+  border-radius: var(--border-radius-medium);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.benefit-item img {
+  width: 70px; /* Slightly larger icons */
+  height: 70px;
+  margin-bottom: var(--spacing-medium);
+  filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(100deg) saturate(300%); /* Example: Tint icons green */
+  /* Or use colored SVG icons */
+}
+
+.benefit-item h3 {
+  margin-bottom: var(--spacing-small);
+  color: var(--color-primary);
+  font-size: 1.6em;
+}
+
+.benefit-item p {
+   font-size: 1em;
+   color: #444;
+}
+
+
+/* ========================================= */
+/* 4. FLAVORS SECTION (Engaging Grid/Carousel)*/
+/* ========================================= */
+.flavors-section h2,
+.flavors-section .section-description {
+   text-align: center;
+}
+
+.section-description {
+  font-size: 1.2em;
+  margin-bottom: var(--spacing-large);
+  color: #666;
+}
+
+.flavors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-large);
+  margin-bottom: var(--spacing-large);
+}
+
+.flavor-item {
+  text-align: center;
+  background-color: var(--color-background-light);
+  padding: var(--spacing-medium);
+  border-radius: var(--border-radius-medium);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Push buttons to bottom */
+  height: 100%; /* Ensure items in a row are same height */
+}
+
+.flavor-item:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.flavor-item img {
+  width: 250px; /* Bigger product images */
+  height: auto;
+  margin: 0 auto var(--spacing-small);
+  border-radius: var(--border-radius-small);
+  /* Ensure image fits within container */
+  object-fit: contain;
+}
+
+.flavor-item h3 {
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-dark);
+  font-size: 1.5em;
+}
+
+.flavor-item p {
+  font-size: 1em;
+  color: #555;
+  flex-grow: 1; /* Allow description to take available space */
+  margin-bottom: var(--spacing-medium); /* Space before buttons */
+}
+
+.flavor-ctas {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: var(--spacing-small);
+  margin-top: var(--spacing-small); /* Space above buttons */
+}
+
+.flavor-ctas .cta-button {
+  width: 100%; /* Make buttons full width */
+  font-size: 1em; /* Slightly smaller buttons in cards */
+  padding: var(--spacing-small);
+}
+
+
+.cta-container {
+  text-align: center;
+  margin-top: var(--spacing-large);
+}
+
+
+/* ========================================= */
+/* 5. TESTIMONIAL SECTION (Trust Building)   */
+/* ========================================= */
+.testimonials-section {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-light);
+  text-align: center;
+}
+
+.testimonials-carousel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-large);
+  /* Add JS for actual carousel functionality and adjust display */
+}
+
+.testimonial-item {
+  background-color: rgba(255, 255, 255, 0.15); /* Slightly more visible card */
+  padding: var(--spacing-medium);
+  border-radius: var(--border-radius-medium);
+  font-style: italic;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  /* Add hover effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.testimonial-item blockquote {
+  margin: 0 0 var(--spacing-small);
+  font-size: 1.2em; /* Larger quotes */
+  line-height: 1.6;
+  color: var(--color-text-light); /* Ensure text is light */
+}
+
+.testimonial-item .customer-name {
+  font-style: normal;
+  font-weight: 600; /* Semi-bold */
+  font-size: 1em;
+  color: var(--color-secondary); /* Use accent color for names */
+}
+
+/* ========================================= */
+/* 6. BRAND MANIFESTO (Authenticity & Rebel) */
+/* ========================================= */
+.manifesto-section .container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: var(--spacing-large);
+   max-width: 900px; /* Keep text block readable */
+   text-align: center;
+}
+
+.manifesto-content {
+  /* No specific style needed if container handles layout */
+}
+
+.manifesto-content h2 {
+   color: var(--color-primary);
+   margin-bottom: var(--spacing-medium);
+}
+
+/* Optional: Style for the rebel accent font on part of the manifesto? */
+.manifesto-content h2 span {
+  font-family: var(--font-rebel-accent);
+  color: var(--color-secondary);
+  font-weight: normal;
+  font-size: 1.2em; /* Adjust size relative to h2 */
+  display: block; /* Put the accent line below */
+  margin-top: var(--spacing-xs);
+}
+
+
+.manifesto-content p {
+  font-size: 1.2em;
+  margin-bottom: var(--spacing-medium);
+  color: #444;
+}
+
+
+/* ========================================= */
+/* 7. FINAL CALL TO ACTION (Strong Closer)   */
+/* ========================================= */
+.final-cta-section {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-medium);
+  background-image: url('placeholder-final-cta-bg.png'); /* Optional: Add a graphic/texture */
+  background-size: cover;
+  background-position: center;
+}
+
+.final-cta-section h2 {
+  color: var(--color-text-light);
+  font-size: 3em; /* Prominent final heading */
+  margin-bottom: var(--spacing-medium);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.final-cta-section p {
+  font-size: 1.4em; /* Clear, persuasive text */
+  margin-bottom: var(--spacing-large);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300;
+}
+
+.final-cta-section .cta-button {
+  font-size: 1.6em; /* Largest, most impactful CTA */
+  padding: var(--spacing-medium) var(--spacing-xl);
+  background-color: var(--color-secondary);
+  color: var(--color-text-dark);
+  border-radius: var(--border-radius-medium);
+}
+
+.final-cta-section .cta-button {
+  font-size: 1.6em; /* Largest, most impactful CTA */
+  padding: var(--spacing-medium) var(--spacing-xl);
+  /* background-color: var(--color-secondary); // This line is now less important */
+  /* color: var(--color-text-dark); // This line is now less important */
+  border-radius: var(--border-radius-medium);
+}
+
+
+/* ========================================= */
+/* FOOTER (Enhanced Contact Options)         */
+/* ========================================= */
+footer {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-light);
+  padding: var(--spacing-medium) 0;
+  font-size: 0.95em;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-medium); /* Space between main blocks */
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Remove default margin */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-medium);
+}
+
+.footer-nav a {
+  color: var(--color-background-light);
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: var(--color-secondary);
+}
+
+.footer-contact {
+  margin-top: var(--spacing-small);
+}
+
+.footer-contact p {
+   margin-bottom: var(--spacing-xs);
+}
+
+.footer-social-whatsapp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-small);
+  margin-top: var(--spacing-small);
+}
+
+.footer-social-whatsapp a {
+  color: var(--color-background-light);
+  font-size: 1.5em;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-social-whatsapp a:hover {
+  color: #25D366; /* WhatsApp Green hover */
+  transform: scale(1.1);
+}
+
+.copyright {
+  margin-top: var(--spacing-medium);
+  opacity: 0.7;
+}
+
+
+/* ========================================= */
+/* Responsive Adjustments (Refined)        */
+/* ========================================= */
+@media (max-width: 992px) {
+  h1 { font-size: 3.5em; }
+  h2 { font-size: 2.4em; }
+  h3 { font-size: 1.6em; }
+  p { font-size: 1em; } /* Slightly smaller body text on smaller screens */
+
+  .hero-section h1 { font-size: 4em; }
+  .hero-section .subheadline { font-size: 1.3em; }
+  .hero-ctas .cta-button { font-size: 1.2em; padding: var(--spacing-medium); }
+
+  .final-cta-section h2 { font-size: 2.5em; }
+  .final-cta-section p { font-size: 1.2em; }
+  .final-cta-section .cta-button { font-size: 1.4em; padding: var(--spacing-medium) var(--spacing-large); }
+
+  .benefits-grid,
+  .flavors-grid,
+  .testimonials-carousel {
+      gap: var(--spacing-medium);
   }
-   .main-nav.active { display: block; } /* Show nav when active class is added */
-  .main-nav ul { flex-direction: column; align-items: center; gap: 15px; }
-
-  .hero-section { min-height: 70vh; }
-  .hero-content .subtitle { font-size: 1.1rem; }
-
-  .benefits-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 25px; }
-
-  .about-container { flex-direction: column; }
-  .about-content { text-align: center; }
-  .about-content h2 { text-align: center; }
-
-  .footer-container { flex-direction: column; align-items: center; }
-  .footer-links { justify-content: space-around; width: 100%; }
-  .link-column { flex-basis: 45%; text-align: center; }
 }
 
-@media (min-width: 769px) { /* Adjustments for footer layout on medium screens+ */
-   .footer-logo { flex-basis: auto; text-align: left; margin-bottom: 0; }
-   .footer-links { flex-basis: auto; justify-content: flex-end; text-align: left;}
+@media (max-width: 768px) {
+  h1 { font-size: 3em; margin-bottom: var(--spacing-medium); }
+  h2 { font-size: 2em; margin-bottom: var(--spacing-large); }
+  h3 { font-size: 1.4em; }
+
+  section {
+      padding: var(--spacing-large) 0; /* Less padding overall */
+  }
+
+  .container {
+      padding: 0 var(--spacing-small); /* More padding on the sides */
+  }
+
+  .hero-section {
+      min-height: 70vh; /* Adjust height */
+  }
+
+  .hero-section h1 {
+      font-size: 3.5em; /* Adjust hero headline size */
+  }
+
+  .hero-section .subheadline {
+      font-size: 1.1em;
+  }
+
+   .hero-ctas {
+       flex-direction: column; /* Stack buttons vertically in hero on small screen */
+       gap: var(--spacing-small);
+   }
+
+  .cta-button {
+      padding: var(--spacing-small);
+      font-size: 1em;
+  }
+
+   .final-cta-section h2 { font-size: 2em; }
+   .final-cta-section p { font-size: 1em; }
+  .final-cta-section .cta-button { font-size: 1.2em; padding: var(--spacing-medium); }
+
+
+  .benefits-grid,
+  .flavors-grid,
+  .testimonials-carousel {
+      gap: var(--spacing-medium);
+  }
+
+  .flavor-item img {
+      width: 150px;
+  }
+
+  .floating-whatsapp {
+      width: 50px;
+      height: 50px;
+      font-size: 1.8em;
+      bottom: var(--spacing-small);
+      right: var(--spacing-small);
+  }
+
+  .footer-nav ul {
+      gap: var(--spacing-small);
+  }
 }
 
-/* --- Accessibility --- */
-a:focus-visible, button:focus-visible, input:focus-visible { /* Modern focus styling */
-  outline: 3px solid var(--tribu-accent);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 3px var(--tribu-bg-light), 0 0 0 5px var(--tribu-accent);
+@media (max-width: 480px) {
+  h1 { font-size: 2.5em; }
+  h2 { font-size: 1.6em; }
+
+  .hero-section h1 { font-size: 3em; }
+   .hero-section .subheadline { font-size: 1em; }
+
+  .benefits-grid,
+  .flavors-grid,
+  .testimonials-carousel {
+      grid-template-columns: 1fr; /* Stack grid items fully on smallest screens */
+  }
+
+   .flavor-item img { width: 120px; }
 }
-.sr-only { /* Screen Reader Only */
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+
+/* Add this to your style.css file */
+
+/* ========================================= */
+/* CTA Active States (For soft click effect) */
+/* ========================================= */
+
+/* When the Primary CTA is being clicked down */
+.cta-button.primary-cta:active {
+  transform: scale(0.98); /* Shrink slightly */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reduce shadow to look "pressed" */
+  background-color: color-mix(in srgb, var(--color-secondary) 80%, black 20%); /* Slightly darker background */
+   /* Optional: Slightly darker text color if needed */
+  /* color: color-mix(in srgb, var(--color-text-dark) 90%, black 10%); */
+}
+
+/* When the Secondary CTA is being clicked down */
+.cta-button.secondary-cta:active {
+  transform: scale(0.98); /* Shrink slightly */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reduce shadow */
+  background-color: var(--color-primary); /* Fill with primary color */
+  color: var(--color-text-light); /* Change text to light */
+  /* Ensure border transitions smoothly too if you animate it */
+  /* border-color: color-mix(in srgb, var(--color-primary) 80%, black 20%); */
+}
+
+/* When the WhatsApp CTA is being clicked down */
+.cta-button.whatsapp-cta:active {
+  transform: scale(0.98); /* Shrink slightly */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reduce shadow */
+  background-color: color-mix(in srgb, #25D366 80%, black 20%); /* Slightly darker green */
+   /* Optional: Keep icon color the same */
+   /* i { color: var(--color-text-light); } */
+}
+
+/* Active state for the Floating WhatsApp button */
+.floating-whatsapp:active {
+  transform: scale(0.95); /* More pronounced shrink */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow */
+  background-color: color-mix(in srgb, #25D366 80%, black 20%);
+}
+
+
+/* Also good practice: Add focus styles for keyboard navigation */
+.cta-button:focus {
+  outline: 3px solid var(--color-secondary); /* Add a visible outline */
+  outline-offset: 2px; /* Space between outline and button */
+}
+
+/* Remove default outline when active IF the focus style is clearly visible */
+/* This helps prevent a double outline briefly */
+.cta-button:focus:active {
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
 }
